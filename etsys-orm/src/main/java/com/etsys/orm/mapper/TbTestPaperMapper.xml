@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.etsys.orm.mapper.TbTestPaperMapper" >
+  <resultMap id="BaseResultMap" type="com.etsys.orm.pojo.TbTestPaper" >
+    <id column="tp_id" property="tpId" jdbcType="VARCHAR" />
+    <result column="tp_name" property="tpName" jdbcType="VARCHAR" />
+    <result column="tp_state" property="tpState" jdbcType="INTEGER" />
+    <result column="stu_id" property="stuId" jdbcType="VARCHAR" />
+    <result column="course_id" property="courseId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.etsys.orm.pojo.TbTestPaper" extends="BaseResultMap" >
+    <result column="tp_content" property="tpContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tp_id, tp_name, tp_state, stu_id, course_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    tp_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.etsys.orm.pojo.TbTestPaperExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_test_paper
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.etsys.orm.pojo.TbTestPaperExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_test_paper
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_test_paper
+    where tp_id = #{tpId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_test_paper
+    where tp_id = #{tpId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.etsys.orm.pojo.TbTestPaperExample" >
+    delete from tb_test_paper
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.etsys.orm.pojo.TbTestPaper" >
+    insert into tb_test_paper (tp_id, tp_name, tp_state, 
+      stu_id, course_id, tp_content
+      )
+    values (#{tpId,jdbcType=VARCHAR}, #{tpName,jdbcType=VARCHAR}, #{tpState,jdbcType=INTEGER}, 
+      #{stuId,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, #{tpContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.etsys.orm.pojo.TbTestPaper" >
+    insert into tb_test_paper
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tpId != null" >
+        tp_id,
+      </if>
+      <if test="tpName != null" >
+        tp_name,
+      </if>
+      <if test="tpState != null" >
+        tp_state,
+      </if>
+      <if test="stuId != null" >
+        stu_id,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="tpContent != null" >
+        tp_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tpId != null" >
+        #{tpId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpName != null" >
+        #{tpName,jdbcType=VARCHAR},
+      </if>
+      <if test="tpState != null" >
+        #{tpState,jdbcType=INTEGER},
+      </if>
+      <if test="stuId != null" >
+        #{stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpContent != null" >
+        #{tpContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.etsys.orm.pojo.TbTestPaperExample" resultType="java.lang.Integer" >
+    select count(*) from tb_test_paper
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_test_paper
+    <set >
+      <if test="record.tpId != null" >
+        tp_id = #{record.tpId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tpName != null" >
+        tp_name = #{record.tpName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tpState != null" >
+        tp_state = #{record.tpState,jdbcType=INTEGER},
+      </if>
+      <if test="record.stuId != null" >
+        stu_id = #{record.stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseId != null" >
+        course_id = #{record.courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tpContent != null" >
+        tp_content = #{record.tpContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tb_test_paper
+    set tp_id = #{record.tpId,jdbcType=VARCHAR},
+      tp_name = #{record.tpName,jdbcType=VARCHAR},
+      tp_state = #{record.tpState,jdbcType=INTEGER},
+      stu_id = #{record.stuId,jdbcType=VARCHAR},
+      course_id = #{record.courseId,jdbcType=VARCHAR},
+      tp_content = #{record.tpContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_test_paper
+    set tp_id = #{record.tpId,jdbcType=VARCHAR},
+      tp_name = #{record.tpName,jdbcType=VARCHAR},
+      tp_state = #{record.tpState,jdbcType=INTEGER},
+      stu_id = #{record.stuId,jdbcType=VARCHAR},
+      course_id = #{record.courseId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.etsys.orm.pojo.TbTestPaper" >
+    update tb_test_paper
+    <set >
+      <if test="tpName != null" >
+        tp_name = #{tpName,jdbcType=VARCHAR},
+      </if>
+      <if test="tpState != null" >
+        tp_state = #{tpState,jdbcType=INTEGER},
+      </if>
+      <if test="stuId != null" >
+        stu_id = #{stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="tpContent != null" >
+        tp_content = #{tpContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where tp_id = #{tpId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.etsys.orm.pojo.TbTestPaper" >
+    update tb_test_paper
+    set tp_name = #{tpName,jdbcType=VARCHAR},
+      tp_state = #{tpState,jdbcType=INTEGER},
+      stu_id = #{stuId,jdbcType=VARCHAR},
+      course_id = #{courseId,jdbcType=VARCHAR},
+      tp_content = #{tpContent,jdbcType=LONGVARCHAR}
+    where tp_id = #{tpId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.etsys.orm.pojo.TbTestPaper" >
+    update tb_test_paper
+    set tp_name = #{tpName,jdbcType=VARCHAR},
+      tp_state = #{tpState,jdbcType=INTEGER},
+      stu_id = #{stuId,jdbcType=VARCHAR},
+      course_id = #{courseId,jdbcType=VARCHAR}
+    where tp_id = #{tpId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,259 @@
+body{
+	font-family:"ËÎÌו", Arial,Verdana, sans-serif, Helvetica;
+	font-size:14px;
+}		
+a{
+	color:#000;
+}
+a:link,a:visited,a:active,a:hover{
+	text-decoration:none;
+}
+.content_user{
+	width:480px;
+	}
+.title{
+	font-size: 20px;
+	font-weight: bold;
+	height:40px;
+	margin-top:20px;
+	width:100%;
+	text-align:center;
+}
+.user_ItemDiv_head{
+	height: 30px;
+	margin-left:30px;
+	background-color: #C8C8C8;	
+	width:100%;
+	
+}
+.headselect{
+	margin-left:3px;
+	float:left;
+	width:30px;
+	height:100%;
+	text-align:center;
+	line-height:30px;
+	border-right:1px solid white;
+	
+}
+.headno{
+	margin-left:3px;
+	float:left;
+	width:50px;
+	height:100%;
+	text-align:center;
+	line-height:30px;
+	border-right:1px solid white;
+}
+.headuserName{
+	margin-left:3px;
+	float:left;
+	width:150px;
+	height:100%;
+	text-align:center;
+	line-height:27px;	
+	border-right:1px solid white;
+}
+.headuserClass{
+	margin-left:3px;
+	float:left;
+	height:100%;
+	text-align:center;
+	line-height:27px;	
+}
+
+.user_ItemDiv{
+	height: 30px;
+	margin-left:30px;
+	width:100%;
+	border-bottom:1px solid  #C8C8C8;	
+}
+
+.select{
+	margin-left:3px;
+	float:left;
+	width:30px;
+	text-align:center;
+	line-height:27px;
+}
+.no{
+	margin-left:3px;
+	float:left;
+	width:53px;
+	text-align:center;
+	line-height:27px;
+}
+.userName{
+	margin-left:3px;
+	float:left;
+	width:150px;
+	text-align:center;
+	line-height:27px;
+}
+
+.userClass{
+	margin-left:3px;
+	float:left;
+	text-align:center;
+	line-height:27px;
+}
+
+.buttonDiv{
+	height: 50px;
+	width:100%;
+	text-align:center;
+	margin-top:30px;
+}
+.content_user_add{
+	width:400px;
+	}
+.userItem{
+	margin-left:80px;
+	height: 30px;
+}
+.userItem_name{
+	margin-left:80px;
+	height: 30px;
+}
+.userItem_name input{
+	border-width: 0px;
+}
+.info{
+	width:100%;
+	text-align:center;
+	margin-bottom:5px;
+	color:red;
+}
+
+.content_course{
+	width:245px;	
+}
+.headCourseName{
+	margin-left:3px;
+	float:left;
+	width:150px;
+	height:100%;
+	text-align:center;
+	line-height:27px;	
+}
+.query{
+	height:30px;
+	margin-left:30px;
+}
+.query input{
+	width:100px;
+}
+.selectDep{
+	width:155px;
+}
+.content_question{
+	width:800px;
+	}
+.filter_course{
+	width:100%;
+	height:30px;
+	margin-left:30px;	
+	}
+.questionContentHeader{
+	margin-left:3px;
+	height:100%;
+	text-align:center;
+	line-height:30px;
+	}
+.questionContent{
+	margin-left:3px;
+	height:100%;
+	line-height:30px;
+	}
+.content_question_add{
+	margin-left:30px;
+	width:500px;
+
+	}
+.questionTitle{
+	width:40px;
+	margin-top:5px;
+	font-weight:bold;
+
+	}
+.optionContent{
+	width:500px;
+	margin-top:5px;
+}
+.pageDiv{
+	height: 30px;
+	width:100%;
+	text-align:center;
+	margin-top:20px;
+	}
+.pageButtonDiv{
+	height: 30px;
+	width:100%;
+	text-align:center;
+	}
+.headCourse{
+	margin-left:3px;
+	float:left;
+	width:240px;
+	height:100%;
+	text-align:center;
+	line-height:30px;
+	border-right:1px solid white;
+}
+.headIfTest{
+	margin-left:3px;
+	float:left;
+	width:85px;
+	height:100%;
+	text-align:center;
+	line-height:30px;
+	border-right:1px solid white;
+	}
+.headIfSubmit{
+	margin-left:3px;
+	float:left;
+	width:85px;
+	height:100%;
+	text-align:center;
+	line-height:30px;
+	}
+.testOptionContent{
+	width:100%;
+	margin-top:5px;
+	}
+.info2{
+	margin-top:20px;
+	width:100%;
+	text-align:center;
+	color:red;
+	font-weight:bold;
+}
+.scoreList{
+	margin-left:3px;
+	float:left;
+	width:60px;
+	height:100%;
+	text-align:center;
+	line-height:30px;
+	border-right:1px solid white;
+	}
+.scoreCourse{
+	margin-left:3px;
+	float:left;
+	width:100px;
+	height:100%;
+	text-align:center;
+	line-height:30px;
+	border-right:1px solid white;
+	}
+.scoreOpen{
+	margin-left:3px;
+	float:left;
+	width:60px;
+	height:100%;
+	text-align:center;
+	line-height:30px;
+	}
+.content_scoreList{
+	width:860px;
+	}

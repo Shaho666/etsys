@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.etsys.orm.mapper.TbTemplateEntryMapper" >
+  <resultMap id="BaseResultMap" type="com.etsys.orm.pojo.TbTemplateEntry" >
+    <id column="tem_entry_id" property="temEntryId" jdbcType="INTEGER" />
+    <result column="tem_id" property="temId" jdbcType="VARCHAR" />
+    <result column="tem_type" property="temType" jdbcType="INTEGER" />
+    <result column="tem_num" property="temNum" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.etsys.orm.pojo.TbTemplateEntry" extends="BaseResultMap" >
+    <result column="tem_score" property="temScore" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tem_entry_id, tem_id, tem_type, tem_num
+  </sql>
+  <sql id="Blob_Column_List" >
+    tem_score
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.etsys.orm.pojo.TbTemplateEntryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_template_entry
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.etsys.orm.pojo.TbTemplateEntryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_template_entry
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_template_entry
+    where tem_entry_id = #{temEntryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_template_entry
+    where tem_entry_id = #{temEntryId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.etsys.orm.pojo.TbTemplateEntryExample" >
+    delete from tb_template_entry
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.etsys.orm.pojo.TbTemplateEntry" >
+    insert into tb_template_entry (tem_entry_id, tem_id, tem_type, 
+      tem_num, tem_score)
+    values (#{temEntryId,jdbcType=INTEGER}, #{temId,jdbcType=VARCHAR}, #{temType,jdbcType=INTEGER}, 
+      #{temNum,jdbcType=INTEGER}, #{temScore,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.etsys.orm.pojo.TbTemplateEntry" >
+    insert into tb_template_entry
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="temEntryId != null" >
+        tem_entry_id,
+      </if>
+      <if test="temId != null" >
+        tem_id,
+      </if>
+      <if test="temType != null" >
+        tem_type,
+      </if>
+      <if test="temNum != null" >
+        tem_num,
+      </if>
+      <if test="temScore != null" >
+        tem_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="temEntryId != null" >
+        #{temEntryId,jdbcType=INTEGER},
+      </if>
+      <if test="temId != null" >
+        #{temId,jdbcType=VARCHAR},
+      </if>
+      <if test="temType != null" >
+        #{temType,jdbcType=INTEGER},
+      </if>
+      <if test="temNum != null" >
+        #{temNum,jdbcType=INTEGER},
+      </if>
+      <if test="temScore != null" >
+        #{temScore,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.etsys.orm.pojo.TbTemplateEntryExample" resultType="java.lang.Integer" >
+    select count(*) from tb_template_entry
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_template_entry
+    <set >
+      <if test="record.temEntryId != null" >
+        tem_entry_id = #{record.temEntryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.temId != null" >
+        tem_id = #{record.temId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temType != null" >
+        tem_type = #{record.temType,jdbcType=INTEGER},
+      </if>
+      <if test="record.temNum != null" >
+        tem_num = #{record.temNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.temScore != null" >
+        tem_score = #{record.temScore,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tb_template_entry
+    set tem_entry_id = #{record.temEntryId,jdbcType=INTEGER},
+      tem_id = #{record.temId,jdbcType=VARCHAR},
+      tem_type = #{record.temType,jdbcType=INTEGER},
+      tem_num = #{record.temNum,jdbcType=INTEGER},
+      tem_score = #{record.temScore,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_template_entry
+    set tem_entry_id = #{record.temEntryId,jdbcType=INTEGER},
+      tem_id = #{record.temId,jdbcType=VARCHAR},
+      tem_type = #{record.temType,jdbcType=INTEGER},
+      tem_num = #{record.temNum,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.etsys.orm.pojo.TbTemplateEntry" >
+    update tb_template_entry
+    <set >
+      <if test="temId != null" >
+        tem_id = #{temId,jdbcType=VARCHAR},
+      </if>
+      <if test="temType != null" >
+        tem_type = #{temType,jdbcType=INTEGER},
+      </if>
+      <if test="temNum != null" >
+        tem_num = #{temNum,jdbcType=INTEGER},
+      </if>
+      <if test="temScore != null" >
+        tem_score = #{temScore,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where tem_entry_id = #{temEntryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.etsys.orm.pojo.TbTemplateEntry" >
+    update tb_template_entry
+    set tem_id = #{temId,jdbcType=VARCHAR},
+      tem_type = #{temType,jdbcType=INTEGER},
+      tem_num = #{temNum,jdbcType=INTEGER},
+      tem_score = #{temScore,jdbcType=LONGVARCHAR}
+    where tem_entry_id = #{temEntryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.etsys.orm.pojo.TbTemplateEntry" >
+    update tb_template_entry
+    set tem_id = #{temId,jdbcType=VARCHAR},
+      tem_type = #{temType,jdbcType=INTEGER},
+      tem_num = #{temNum,jdbcType=INTEGER}
+    where tem_entry_id = #{temEntryId,jdbcType=INTEGER}
+  </update>
+</mapper>

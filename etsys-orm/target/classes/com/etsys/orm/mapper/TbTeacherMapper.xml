@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.etsys.orm.mapper.TbTeacherMapper" >
+  <resultMap id="BaseResultMap" type="com.etsys.orm.pojo.TbTeacher" >
+    <id column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+    <result column="teacher_password" property="teacherPassword" jdbcType="VARCHAR" />
+    <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    teacher_id, teacher_password, teacher_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.etsys.orm.pojo.TbTeacherExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_teacher
+    where teacher_id = #{teacherId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_teacher
+    where teacher_id = #{teacherId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.etsys.orm.pojo.TbTeacherExample" >
+    delete from tb_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.etsys.orm.pojo.TbTeacher" >
+    insert into tb_teacher (teacher_id, teacher_password, teacher_name
+      )
+    values (#{teacherId,jdbcType=VARCHAR}, #{teacherPassword,jdbcType=VARCHAR}, #{teacherName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.etsys.orm.pojo.TbTeacher" >
+    insert into tb_teacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teacherId != null" >
+        teacher_id,
+      </if>
+      <if test="teacherPassword != null" >
+        teacher_password,
+      </if>
+      <if test="teacherName != null" >
+        teacher_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPassword != null" >
+        #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherName != null" >
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.etsys.orm.pojo.TbTeacherExample" resultType="java.lang.Integer" >
+    select count(*) from tb_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_teacher
+    <set >
+      <if test="record.teacherId != null" >
+        teacher_id = #{record.teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherPassword != null" >
+        teacher_password = #{record.teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherName != null" >
+        teacher_name = #{record.teacherName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_teacher
+    set teacher_id = #{record.teacherId,jdbcType=VARCHAR},
+      teacher_password = #{record.teacherPassword,jdbcType=VARCHAR},
+      teacher_name = #{record.teacherName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.etsys.orm.pojo.TbTeacher" >
+    update tb_teacher
+    <set >
+      <if test="teacherPassword != null" >
+        teacher_password = #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherName != null" >
+        teacher_name = #{teacherName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where teacher_id = #{teacherId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.etsys.orm.pojo.TbTeacher" >
+    update tb_teacher
+    set teacher_password = #{teacherPassword,jdbcType=VARCHAR},
+      teacher_name = #{teacherName,jdbcType=VARCHAR}
+    where teacher_id = #{teacherId,jdbcType=VARCHAR}
+  </update>
+</mapper>
