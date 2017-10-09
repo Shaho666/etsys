@@ -28,41 +28,8 @@
 
 <body>
 
-	<!--.preloader-->
-	<div class="preloader">
-		<i class="fa fa-circle-o-notch fa-spin"></i>
-	</div>
-	<!--/.preloader-->
+    <jsp:include page="header.jsp"></jsp:include>
 
-	<header id="home">
-	<div class="main-nav">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"> <!-- <h1>
-						<img class="img-responsive" src="/images/logo.png" alt="logo">
-					</h1> -->
-					<h1 style="color: white; font-size: 35px">etsys</h1>
-				</a>
-			</div>
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="scroll active"><a href="#home">主页</a></li>
-					<li class="scroll"><a href="#services">服务</a></li>
-					<li class="scroll"><a href="#about-us">关于我们</a></li>
-					<li class="scroll"><a href="#team">团队</a></li>
-					<li class="scroll"><a href="#blog">博客</a></li>
-					<li class="scroll"><a href="#contact">联系我们</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<!--/#main-nav--> </header>
 	<!--/#home-->
 	<section id="services">
 	<div class="container">
@@ -77,9 +44,9 @@
 					<div id="entrance" style="padding: 0px 130px 10px;">
 						<a href="/signUp/showTeacherPrePage"><input type="button"
 							id="teacher" value="我是老师 "
-							class="btn btn-danger btn-sm btn-block"></a> <br> 
-						<a href="/signIn/showStuPrePage">
-							<input type="button" id="student" value="我是学生"
+							class="btn btn-danger btn-sm btn-block"></a> <br> <a
+							href="/signIn/showStuPrePage"> <input type="button"
+							id="student" value="我是学生"
 							class="btn btn-warning btn-sm btn-block">
 						</a>
 					</div>

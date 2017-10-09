@@ -34,7 +34,8 @@ public class CourseController {
 	public String getCoursesByTeacherId(@RequestParam("teacherId") String teacherId,
 			@RequestParam("returnPage") String returnPage, ModelMap modelMap) {
 
-		/* 在此处填写合适的代码 */
+		List<TbCourse> list = courseService.getCoursesByTeacherId(teacherId);
+		modelMap.put("courseList", list);
 
 		return returnPage;
 	}
@@ -48,6 +49,7 @@ public class CourseController {
 		return returnPage;
 	}
 
+	@RequestMapping("/syncByTeacherId/{teacherId}")
 	public String syncByTeacherId(@PathVariable String teacherId) {
 
 		String courseJson = HttpClientUtil
