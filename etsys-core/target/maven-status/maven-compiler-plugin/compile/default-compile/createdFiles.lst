@@ -31,6 +31,7 @@ com\etsys\core\service\ScoreService.class
 com\etsys\core\pojo\Instructor.class
 com\etsys\core\controller\QuestionBankController.class
 com\etsys\core\service\impl\TeacherCourseServiceImpl.class
+com\etsys\core\controller\TeacherCourseController.class
 com\etsys\core\service\impl\QuestionTypeServiceImpl.class
 com\etsys\core\service\impl\SignUpServiceImpl.class
 com\etsys\core\service\QuestionTypeService.class

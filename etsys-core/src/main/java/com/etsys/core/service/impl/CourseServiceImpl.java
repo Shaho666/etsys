@@ -1,7 +1,9 @@
 package com.etsys.core.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +42,9 @@ public class CourseServiceImpl implements CourseService {
 			courses.add(course);
 		}
 
+		Set<TbCourse> courseSet = new HashSet<TbCourse>(courses);
+		courses = new ArrayList<>(courseSet);
+		
 		return courses;
 	}
 
