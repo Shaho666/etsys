@@ -10,7 +10,7 @@ public class TeacherCourseController {
 	@RequestMapping("/sync")
 	public String syncRecords() {
 		
-		return null;
+		return "forward:/signIn/showTeacherIndex";
 	}
 	
 }

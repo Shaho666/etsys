@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-<script type="text/javascript" src="/js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/commons.js"></script>
 <script type="text/javascript">
@@ -20,7 +20,7 @@
 			});
 			$.post('/signIn/teacherSignIn', json, function(data) {
 				if (data.status == 200) {
-					alert("登陆成功！");
+					alert("登录成功！");
 					location.href = "/signIn/showTeacherIndex";
 				} else {
 					alert("错误编号:" + data.status + "\n请稍后重试或联系站点管理员")

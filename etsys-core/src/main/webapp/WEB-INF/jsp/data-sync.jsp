@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,20 +28,23 @@
 <script src="/js/dashboard.js" type="text/javascript"></script>
 </head>
 <body class="skin-black">
-    <jsp:include page="up-side.jsp"></jsp:include>
+	<jsp:include page="up-side.jsp"></jsp:include>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
-
-		<jsp:include page="stu-left-side.jsp"></jsp:include>
-
+		<jsp:include page="left-side.jsp"></jsp:include>
 		<aside class="right-side"> <section class="content">
 		<div id="con-center" class="row" style="margin-bottom: 5px;">
-			<div style="padding: 20px 200px 10px;">
-				
+			<div style="padding: 80px 300px 10px;">
+				<p class="text-muted">如果您认为现有数据和实际情况不相符，请点击下面的按钮重新加载。</p>
+				<p class="text-muted">加载数据过程中可能时间较长，请耐心等待，谢谢！</p>
+				<div style="padding: 50px 500px 20px 0px;">
+					<form action="/teacherCourse/sync">
+						<input class="btn btn-sm btn-success btn-block" type="submit"
+							value="数据有误？点我刷新">
+					</form>
+				</div>
 			</div>
 		</div>
 		</section> </aside>
-		<!-- /.right-side -->
-
 	</div>
 </body>
 </html>

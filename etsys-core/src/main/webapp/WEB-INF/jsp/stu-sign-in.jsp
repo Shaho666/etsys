@@ -20,7 +20,7 @@
 			});
 			$.post('/signIn/studentSignIn', json, function(data) {
 				if (data.status == 200) {
-					alert("登陆成功！");
+					/* alert("登录成功！"); */
 					location.href = "/signIn/showStuIndex";
 				} else {
 					alert("错误编号:" + data.status + "\n请稍后重试或联系您的任课老师")
@@ -37,13 +37,13 @@
 			<h4 align="center">登录</h4>
 			<div class="input-group">
 				<span class="input-group-addon">登录用户名</span> <input name="stuId"
-					type="text" value="stu123456" class="form-control"
+					type="text" value="stu23774156" class="form-control"
 					placeholder="twitterhandle" />
 			</div>
 			<br>
 			<div class="input-group">
 				<span class="input-group-addon">登录密码</span> <input name="stuPassword"
-					type="password" value="stu123456" class="form-control"
+					type="password" value="stu23774156" class="form-control"
 					placeholder="twitterhandle" />
 			</div>
 			<br>

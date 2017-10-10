@@ -53,12 +53,13 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="text-center our-services">
 			<div class="row">
 				<div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms"
 					data-wow-delay="300ms">
 					<div class="service-icon">
-						<!-- <i class="fa fa-calendar"></i> -->
+						<i class="fa fa-calendar"></i>
 					</div>
 					<div class="service-info">
 						<h3>教师学生管理</h3>
@@ -68,7 +69,7 @@
 				<div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms"
 					data-wow-delay="450ms">
 					<div class="service-icon">
-						<!-- <i class="fa fa-umbrella"></i> -->
+						<i class="fa fa-umbrella"></i>
 					</div>
 					<div class="service-info">
 						<h3>在线考试模板</h3>
@@ -78,7 +79,7 @@
 				<div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms"
 					data-wow-delay="550ms">
 					<div class="service-icon">
-						<!-- <i class="fa fa-cloud"></i> -->
+						<i class="fa fa-cloud"></i>
 					</div>
 					<div class="service-info">
 						<h3>试题难度设定</h3>
@@ -88,7 +89,7 @@
 				<div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms"
 					data-wow-delay="650ms">
 					<div class="service-icon">
-						<!-- <i class="fa fa-coffee"></i> -->
+						<i class="fa fa-coffee"></i>
 					</div>
 					<div class="service-info">
 						<h3>快速查询成绩</h3>
@@ -98,7 +99,7 @@
 				<div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms"
 					data-wow-delay="750ms">
 					<div class="service-icon">
-						<!-- <i class="fa fa-bitbucket"></i> -->
+						<i class="fa fa-bitbucket"></i>
 					</div>
 					<div class="service-info">
 						<h3>试卷在线批改</h3>
@@ -108,7 +109,7 @@
 				<div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms"
 					data-wow-delay="850ms">
 					<div class="service-icon">
-						<!-- <i class="fa fa-gift"></i> -->
+						<i class="fa fa-gift"></i>
 					</div>
 					<div class="service-info">
 						<h3>高效生成试卷</h3>
@@ -132,19 +133,19 @@
 			</div>
 			<div class="social-icons">
 				<ul>
-					<li><a class="envelope" href="#"> <!-- <i class="fa fa-envelope"> -->
+					<li><a class="envelope" href="#"> <i class="fa fa-envelope">
 							</i>
 					</a></li>
-					<li><a class="twitter" href="#"> <!-- <i class="fa fa-twitter"></i> -->
+					<li><a class="twitter" href="#"> <i class="fa fa-twitter"></i>
 					</a></li>
-					<li><a class="dribbble" href="#"> <!-- <i class="fa fa-dribbble"></i> -->
+					<li><a class="dribbble" href="#"> <i class="fa fa-dribbble"></i>
 					</a></li>
-					<li><a class="facebook" href="#"> <!-- <i class="fa fa-facebook"></i> -->
+					<li><a class="facebook" href="#"> <i class="fa fa-facebook"></i>
 					</a></li>
-					<li><a class="linkedin" href="#"> <!-- <i class="fa fa-linkedin"></i> -->
+					<li><a class="linkedin" href="#"> <i class="fa fa-linkedin"></i>
 					</a></li>
-					<li><a class="tumblr" href="#"> <!-- <i
-							class="fa fa-tumblr-square"></i> -->
+					<li><a class="tumblr" href="#"> <i
+							class="fa fa-tumblr-square"></i>
 					</a></li>
 				</ul>
 			</div>
