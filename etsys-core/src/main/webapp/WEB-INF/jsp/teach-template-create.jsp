@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,16 +15,16 @@
 <script src="/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 </head>
 <body class="skin-black">
-	<jsp:include page="up-side.jsp"></jsp:include>
+    <jsp:include page="up-side.jsp"></jsp:include>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 
 		<jsp:include page="left-side-template.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
 		<div id="con-center" class="row" style="margin-bottom: 5px;">
-			<div style="padding: 20px 200px 10px;">
-				<h4 class="text-danger" align="center">按课程查看</h4>
-			</div>
+		    <div style="padding: 20px 200px 10px;">
+		        <h4 class="text-danger" align="center">按课程添加</h4>
+		    </div>
 			<div style="padding: 20px 200px 10px;">
 				<table class="table table-hover">
 					<thead>
@@ -37,8 +37,7 @@
 					<tbody>
 						<c:forEach items="${courseList }" var="course">
 							<tr class="success">
-								<td><a
-									href="/template/getByTeacherAndCourse?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }">${course.courseId }</a></td>
+								<td><a href="/template/showPojoPage?courseId=${course.courseId }&teacherId=${sessionScope.teacher.teacherId }">${course.courseId }</a></td>
 								<td>${course.courseName }</td>
 								<td>${course.courseTime }</td>
 							</tr>

@@ -64,4 +64,12 @@ public class CourseServiceImpl implements CourseService {
 		return null;
 	}
 
+	@Override
+	public TbCourse getCourseById(String courseId) {
+		
+		TbCourse course = courseMapper.selectByPrimaryKey(courseId);
+		
+		return course;
+	}
+
 }

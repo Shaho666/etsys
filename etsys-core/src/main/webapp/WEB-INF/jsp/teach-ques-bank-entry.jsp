@@ -13,19 +13,25 @@
 <script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/commons.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#add").click(function() {
+			
+		});
+	});
+</script>
 </head>
 <body class="skin-black">
 	<jsp:include page="up-side.jsp"></jsp:include>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 
-		<jsp:include page="left-side-template.jsp"></jsp:include>
+		<jsp:include page="left-side-ques-bank.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
 		<div id="con-center" class="row" style="margin-bottom: 5px;">
 			<div style="padding: 20px 200px 10px;">
-				<h4 class="text-danger" align="center">按课程查看</h4>
-			</div>
-			<div style="padding: 20px 200px 10px;">
+				<p class="text-danger">该门课程信息如下：</p>
 				<table class="table table-hover">
 					<thead>
 						<tr class="warning">
@@ -35,18 +41,45 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${courseList }" var="course">
-							<tr class="success">
-								<td><a
-									href="/template/getByTeacherAndCourse?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }">${course.courseId }</a></td>
-								<td>${course.courseName }</td>
-								<td>${course.courseTime }</td>
-							</tr>
+						<tr class="success">
+							<td>${course.courseId }</td>
+							<td>${course.courseName }</td>
+							<td>${course.courseTime }</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="padding: 20px 200px 10px;">
+				<a href="/questionBank/showPojoPage/${course.courseId }" class="btn btn-primary btn-sm">增加题目</a>
+			</div>
+			<div style="padding: 20px 200px 10px;">
+				<p class="text-danger">该门课程的题库信息如下：</p>
+				<table class="table table-hover">
+					<thead>
+						<tr class="warning">
+							<th>题目编号</th>
+							<th>题目类型</th>
+							<th>题目难度</th>
+							<th>题目状态</th>
+							<th>课程编号</th>
+							<th>题目内容</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${questionBank }" var="entry">
+						    <tr class="success">
+						        <td>${entry.queId }</td>
+						        <td>${entry.queType }</td>
+						        <td>${entry.queDegree }</td>
+						        <td>${entry.queState }</td>
+						        <td>${entry.courseId }</td>
+						        <td><a href="#">查看</a></td>
+						    </tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				<br>
 			</div>
+			
 		</div>
 		</section> </aside>
 	</div>

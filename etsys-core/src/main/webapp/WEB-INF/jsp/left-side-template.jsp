@@ -49,9 +49,9 @@
 	<li data-toggle="collapse" data-target="#collapseTemplate"><a
 		href="#"> <i class="fa fa-globe"></i> <span>我的模板</span>
 	</a></li>
-	<li id="collapseTemplate" class="collapse"><a
+	<li id="collapseTemplate" class="collapse in"><a
 		href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-template"> &nbsp;&nbsp;<i class="fa fa-globe"></i> <span>查看模板</span>
-	</a><a href="#"> &nbsp;&nbsp;<i class="fa fa-globe"></i> <span>新增模板</span>
+	</a><a href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-template-create"> &nbsp;&nbsp;<i class="fa fa-globe"></i> <span>新增模板</span>
 	</a></li>
 	<li><a
 		href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-stu-score"> <i class="fa fa-glass"></i> <span>学生成绩</span>

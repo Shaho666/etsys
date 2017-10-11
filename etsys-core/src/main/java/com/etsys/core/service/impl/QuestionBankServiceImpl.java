@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.etsys.core.service.QuestionBankService;
 import com.etsys.orm.mapper.TbQuestionBankMapper;
 import com.etsys.orm.pojo.TbQuestionBank;
+import com.etsys.orm.pojo.TbQuestionBankWithBLOBs;
 
 @Service
 public class QuestionBankServiceImpl implements QuestionBankService {
@@ -48,6 +49,12 @@ public class QuestionBankServiceImpl implements QuestionBankService {
 		return null;
 	}
 
-	
+	@Override
+	public Integer insertBankEntry(TbQuestionBankWithBLOBs questionBank) {
+		
+		int result = questionBankMapper.insert(questionBank);
+		
+		return result;
+	}
 
 }

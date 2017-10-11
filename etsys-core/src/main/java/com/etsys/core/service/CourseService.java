@@ -12,4 +12,6 @@ public interface CourseService {
 	
 	public Integer insertCourse(TbCourse tbCourse);
 	
+	public TbCourse getCourseById(String courseId);
+	
 }

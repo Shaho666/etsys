@@ -7,22 +7,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/font-awesome.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 </head>
-<body>
-    ${sessionScope.teacher }
-	<table border="1">
-		<tr>
-			<td>课程编号</td>
-			<td>课程名称</td>
-			<td>课程时长</td>
-		</tr>
-		<c:forEach items="${courseList }" var="course">
-			<td><a
-				href="/student/getByCourseAndTeacher?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }">${course.courseId }</a></td>
-			<td>${course.courseName }</td>
-			<td>${course.courseTime }</td>
-		</c:forEach>
-	</table>
-	<br>
+<body class="skin-black">
+<jsp:include page="up-side.jsp"></jsp:include>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+
+		<jsp:include page="left-side-ques-bank.jsp"></jsp:include>
+
+		<aside class="right-side"> <section class="content">
+		<div id="con-center" class="row" style="margin-bottom: 5px;">
+			<div style="padding: 20px 200px 10px;">
+				<h4 class="text-danger" align="center">按课程查看</h4>
+			</div>
+			<div style="padding: 20px 200px 10px;">
+				<table class="table table-hover">
+					<thead>
+						<tr class="warning">
+							<th>课程编号</th>
+							<th>课程名称</th>
+							<th>课程时长</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${courseList }" var="course">
+							<tr class="success">
+								<td><a
+									href="/questionBank/getBankByCourse/${course.courseId }">${course.courseId }</a></td>
+								<td>${course.courseName }</td>
+								<td>${course.courseTime }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<br>
+			</div>
+		</div>
+		</section> </aside>
+	</div>
 </body>
 </html>
