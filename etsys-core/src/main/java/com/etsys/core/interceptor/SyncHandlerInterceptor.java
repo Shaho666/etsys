@@ -28,9 +28,7 @@ public class SyncHandlerInterceptor implements HandlerInterceptor {
 		TbTeacher teacher = (TbTeacher) arg0.getSession().getAttribute("teacher");
 		String teacherId = teacher.getTeacherId();
 		
-		if (!teacherCourseService.getIfTeacherHasRecords(teacherId)) {
-			teacherCourseService.syncRecords(teacherId);
-		}
+		teacherCourseService.syncRecords(teacherId);
 
 	}
 

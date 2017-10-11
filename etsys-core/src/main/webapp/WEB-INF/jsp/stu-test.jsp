@@ -31,7 +31,7 @@
     <jsp:include page="up-side.jsp"></jsp:include>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 
-		<jsp:include page="left-side.jsp"></jsp:include>
+		<jsp:include page="stu-left-side.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
 		<div id="con-center" class="row" style="margin-bottom: 5px;">

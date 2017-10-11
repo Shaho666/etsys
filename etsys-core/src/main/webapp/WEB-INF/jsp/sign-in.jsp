@@ -20,7 +20,6 @@
 			});
 			$.post('/signIn/teacherSignIn', json, function(data) {
 				if (data.status == 200) {
-					alert("登录成功！");
 					location.href = "/signIn/showTeacherIndex";
 				} else {
 					alert("错误编号:" + data.status + "\n请稍后重试或联系站点管理员")
