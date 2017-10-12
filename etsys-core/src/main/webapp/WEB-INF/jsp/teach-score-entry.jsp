@@ -12,40 +12,37 @@
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script src="/js/jquery-ui-1.10.3.min.js"></script>
+<script src="/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 </head>
 <body class="skin-black">
 
 	<jsp:include page="up-side.jsp"></jsp:include>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 
-		<jsp:include page="stu-left-side.jsp"></jsp:include>
+		<jsp:include page="left-side.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
 		<div id="con-center" class="row" style="margin-bottom: 5px;">
 			<div style="padding: 20px 200px 10px;">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<td>课程编号</td>
-							<td>课程名称</td>
-							<td>课程时长</td>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${courseList }" var="course">
-							<td>${course.courseId }</td>
-							<td>${course.courseName }</td>
-							<td>${course.courseTime }</td>
-						</c:forEach>
-					</tbody>
-				</table>
+				<h4 class="text-danger" align="center">按课程查看</h4>
+			</div>
+			<div style="padding: 20px 200px 10px;">
+				<p>课程编号：${courseId }</p>
+				<p>课程分数：${score.scoMark }</p>
+				<p>成绩细节：${score.scoDetail }</p>
+				<br>
 			</div>
 		</div>
-		</section> </aside>
+		</section>
+		<div style="padding: 0px 500px 10px;">
+			<form action="/data-sync">
+				<input class="btn btn-info btn-block" type="submit"
+					value="数据有误？点我刷新">
+			</form>
+		</div>
+		</aside>
 		<!-- /.right-side -->
 
 	</div>
-
 </body>
 </html>

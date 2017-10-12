@@ -44,7 +44,8 @@ public class CourseController {
 	public String getCoursesByStudentId(@RequestParam("studentId") String studentId,
 			@RequestParam("returnPage") String returnPage, ModelMap modelMap) {
 
-		/* 在此处填写合适的代码 */
+		List<TbCourse> list = courseService.getCoursesByStudentId(studentId);
+		modelMap.put("courseList", list);
 
 		return returnPage;
 	}

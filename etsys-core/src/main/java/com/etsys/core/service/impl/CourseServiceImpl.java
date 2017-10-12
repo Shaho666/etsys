@@ -29,13 +29,13 @@ public class CourseServiceImpl implements CourseService {
 	public List<TbCourse> getCoursesByTeacherId(String teacherId) {
 
 		TbTeacherCourseExample example = new TbTeacherCourseExample();
-		
+
 		example.setDistinct(true);
 		Criteria criteria = example.createCriteria();
 		criteria.andTeacherIdEqualTo(teacherId);
-		
+
 		List<TbCourse> courses = new ArrayList<TbCourse>();
-		
+
 		List<TbTeacherCourse> list = teacherCourseMapper.selectByExample(example);
 		for (TbTeacherCourse tbTeacherCourse : list) {
 			TbCourse course = courseMapper.selectByPrimaryKey(tbTeacherCourse.getCourseId());
@@ -44,7 +44,7 @@ public class CourseServiceImpl implements CourseService {
 
 		Set<TbCourse> courseSet = new HashSet<TbCourse>(courses);
 		courses = new ArrayList<>(courseSet);
-		
+
 		return courses;
 	}
 
@@ -59,16 +59,31 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public List<TbCourse> getCoursesByStudentId(String studentId) {
 
-		/* 在此处填写合适的代码 */
+		TbTeacherCourseExample example = new TbTeacherCourseExample();
 
-		return null;
+		example.setDistinct(true);
+		Criteria criteria = example.createCriteria();
+		criteria.andStudentIdEqualTo(studentId);
+
+		List<TbCourse> courses = new ArrayList<TbCourse>();
+
+		List<TbTeacherCourse> list = teacherCourseMapper.selectByExample(example);
+		for (TbTeacherCourse tbTeacherCourse : list) {
+			TbCourse course = courseMapper.selectByPrimaryKey(tbTeacherCourse.getCourseId());
+			courses.add(course);
+		}
+
+		Set<TbCourse> courseSet = new HashSet<TbCourse>(courses);
+		courses = new ArrayList<>(courseSet);
+
+		return courses;
 	}
 
 	@Override
 	public TbCourse getCourseById(String courseId) {
-		
+
 		TbCourse course = courseMapper.selectByPrimaryKey(courseId);
-		
+
 		return course;
 	}
 

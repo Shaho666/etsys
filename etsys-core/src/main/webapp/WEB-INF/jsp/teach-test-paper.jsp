@@ -8,20 +8,51 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-    ${sessionScope.teacher }
-	<table border="1">
-		<tr>
-			<td>课程编号</td>
-			<td>课程名称</td>
-			<td>课程时长</td>
-		</tr>
-		<c:forEach items="${courseList }" var="course">
-			<td><a
-				href="/testPaper/getTobeckecked">${course.courseId }</a></td>
-			<td>${course.courseName }</td>
-			<td>${course.courseTime }</td>
-		</c:forEach>
-	</table>
+<body class="skin-black">
+
+	<jsp:include page="up-side.jsp"></jsp:include>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+
+		<jsp:include page="left-side.jsp"></jsp:include>
+
+		<aside class="right-side"> <section class="content">
+		<div id="con-center" class="row" style="margin-bottom: 5px;">
+			<div style="padding: 20px 200px 10px;">
+				<h4 class="text-danger" align="center">按课程查看</h4>
+			</div>
+			<div style="padding: 20px 200px 10px;">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>课程编号</th>
+							<th>课程名称</th>
+							<th>课程时长</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${courseList }" var="course">
+							<tr>
+								<td><a
+									href="/student/getByCourseAndTeacher?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }&returnPage=teach-test-paper-check">${course.courseId }</a></td>
+								<td>${course.courseName }</td>
+								<td>${course.courseTime }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<br>
+			</div>
+		</div>
+		</section>
+		<div style="padding: 0px 500px 10px;">
+			<form action="/data-sync">
+				<input class="btn btn-info btn-block" type="submit"
+					value="数据有误？点我刷新">
+			</form>
+		</div>
+		</aside>
+		<!-- /.right-side -->
+
+	</div>
 </body>
 </html>

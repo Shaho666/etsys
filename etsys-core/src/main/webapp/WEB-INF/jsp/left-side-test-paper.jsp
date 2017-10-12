@@ -57,7 +57,7 @@
 		href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-score"> <i class="fa fa-glass"></i> <span>学生成绩</span>
 	</a></li>
 
-	<li data-toggle="collapse" data-target="#collapseTestPaper"><a
+	<li data-toggle="collapse in" data-target="#collapseTestPaper"><a
 		href="#"> <i class="fa fa-glass"></i> <span>管理试卷</span>
 	</a></li>
 	<li id="collapseTestPaper" class="collapse"><a onclick="" href="#">

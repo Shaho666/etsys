@@ -1,6 +1,5 @@
 package com.etsys.core.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.etsys.core.service.TestPaperService;
 import com.etsys.orm.mapper.TbTestPaperMapper;
 import com.etsys.orm.pojo.TbTestPaper;
+import com.etsys.orm.pojo.TbTestPaperExample;
+import com.etsys.orm.pojo.TbTestPaperExample.Criteria;
 
 @Service
 public class TestPaperServiceImpl implements TestPaperService {
@@ -17,11 +18,21 @@ public class TestPaperServiceImpl implements TestPaperService {
 	private TbTestPaperMapper testPaperMapper;
 	
 	@Override
-	public List<TbTestPaper> getByCourseAndClass(String courseId, String className) {
+	public List<TbTestPaper> getByCourseAndStudent(String courseId, String className) {
 		
-		/* 在此处填入合适的代码 */
+		TbTestPaperExample example = new TbTestPaperExample();
 		
-		return new ArrayList<>();
+		Criteria criteria = example.createCriteria();
+		criteria.andCourseIdEqualTo(courseId);
+		criteria.andStuIdEqualTo(className);
+		criteria.andTpStateEqualTo(4);
+		
+		List<TbTestPaper> list = testPaperMapper.selectByExample(example);
+		if(list != null && list.size() > 0) {
+			return list;
+		}
+		
+		return list;
 	}
 
 	@Override

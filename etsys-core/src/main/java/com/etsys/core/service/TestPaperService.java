@@ -6,7 +6,7 @@ import com.etsys.orm.pojo.TbTestPaper;
 
 public interface TestPaperService {
 
-	public List<TbTestPaper> getByCourseAndClass(String courseId, String className);
+	public List<TbTestPaper> getByCourseAndStudent(String courseId, String className);
 	
 	public Integer updateTestPaper(TbTestPaper testPaper);
 	

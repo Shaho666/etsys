@@ -60,11 +60,14 @@ public class StudentController {
 
 	@RequestMapping(value = "/getByCourseAndTeacher", method = RequestMethod.GET)
 	public String getStuByCourseAndTeacher(@RequestParam("teacherId") String teacherId,
-			@RequestParam("courseId") String courseId, String returnPage, ModelMap modelMap) {
+			@RequestParam("courseId") String courseId, @RequestParam("returnPage") String returnPage,
+			ModelMap modelMap) {
 
-		/* 在此处填入合适的代码 */
+		List<TbStudent> students = studentService.getByCourseAndTeacher(teacherId, courseId);
+		modelMap.put("students", students);
+		modelMap.put("courseId", courseId);
 
-		return "teach-stus";
+		return returnPage;
 	}
 
 	public String syncByTeacherAndCourse(@RequestParam("teacherId") String teacherId,
