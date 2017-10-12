@@ -14,6 +14,7 @@ E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbT
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbQuestionBankWithBLOBs.java
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbScoreExample.java
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\mapper\TbStudentMapper.java
+E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbTest.java
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\mapper\TbCourseMapper.java
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbQuestionBankExample.java
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbQuestionTypeExample.java
@@ -24,6 +25,8 @@ E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbT
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbTeacherExample.java
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbStudentExample.java
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbTemplateExample.java
+E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\mapper\TbTestMapper.java
+E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\pojo\TbTestExample.java
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\mapper\TbQuestionBankMapper.java
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\mapper\TbTeacherCourseMapper.java
 E:\workspace\eclipse-oxygen\etsys\etsys-orm\src\main\java\com\etsys\orm\mapper\TbPaperStateMapper.java

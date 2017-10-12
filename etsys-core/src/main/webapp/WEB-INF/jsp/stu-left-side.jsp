@@ -38,12 +38,12 @@
 	</a></li>
 
 	<li><a
-		href="/course/getByStudentId?studentId=${sessionScope.student.stuId }&returnPage=stu-test">
+		href="/test/getByStudent?studentId=${sessionScope.student.stuId }">
 			<i class="fa fa-gavel"></i> <span>我的考试信息</span>
 	</a></li>
 	
 	<li><a
-		href="/course/getByStudentId?studentId=${sessionScope.student.stuId }&returnPage=stu-score">
+		href="/score/getbyStudent/${sessionScope.student.stuId }">
 			<i class="fa fa-gavel"></i> <span>成绩查询</span>
 	</a></li>
 

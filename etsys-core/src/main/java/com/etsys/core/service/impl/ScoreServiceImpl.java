@@ -12,6 +12,7 @@ import com.etsys.core.service.ScoreService;
 import com.etsys.orm.mapper.TbScoreMapper;
 import com.etsys.orm.mapper.TbTestPaperMapper;
 import com.etsys.orm.pojo.TbScore;
+import com.etsys.orm.pojo.TbScoreExample;
 import com.etsys.orm.pojo.TbTestPaper;
 import com.etsys.orm.pojo.TbTestPaperExample;
 import com.etsys.orm.pojo.TbTestPaperExample.Criteria;
@@ -21,7 +22,7 @@ public class ScoreServiceImpl implements ScoreService {
 
 	@Autowired
 	private TbScoreMapper scoreMapper;
-	
+
 	@Autowired
 	private TbTestPaperMapper testPaperMapper;
 
@@ -44,8 +45,24 @@ public class ScoreServiceImpl implements ScoreService {
 
 		Set<TbScore> courseSet = new HashSet<TbScore>(scores);
 		scores = new ArrayList<>(courseSet);
-		
+
 		return scores;
+	}
+
+	@Override
+	public TbScore getByTestPaper(String testPaperId) {
+
+		TbScoreExample example = new TbScoreExample();
+
+		com.etsys.orm.pojo.TbScoreExample.Criteria criteria = example.createCriteria();
+		criteria.andTpIdEqualTo(testPaperId);
+
+		List<TbScore> list = scoreMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list.get(0);
+		}
+
+		return null;
 	}
 
 }

@@ -18,7 +18,7 @@
 <!-- search form -->
 <form action="#" method="get" class="sidebar-form">
 	<div class="input-group">
-		<input type="text" name="q" class="form-control"
+		<input type="text" class="form-control"
 			placeholder="Search..." /> <span class="input-group-btn">
 			<button type='submit' name='seach' id='search-btn'
 				class="btn btn-flat">
@@ -58,7 +58,7 @@
 	</a></li>
 
 	<li data-toggle="collapse" data-target="#collapseTestPaper"><a
-		href="#"> <i class="fa fa-glass"></i> <span>管理试卷</span>
+		href="#"> <i class="fa fa-glass"></i> <span>考试管理</span>
 	</a></li>
 	<li id="collapseTestPaper" class="collapse"><a onclick="" href="#">
 			&nbsp;&nbsp;<i class="fa fa-globe"></i> <span>往年试卷</span>

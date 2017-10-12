@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,10 +33,13 @@ public class TemplateController {
 	@RequestMapping("/getByTeacherAndCourse")
 	public String getTemplatesBy(@RequestParam String teacherId, @RequestParam String courseId, ModelMap modelMap) {
 
-		List<TbTemplate> templates = templateService.getTemplates(teacherId, courseId);
+		TbCourse course = courseService.getCourseById(courseId);
+		
+		List<TbTemplate> templates = templateService.getTemplate(teacherId, courseId);
 		modelMap.put("templates", templates);
+		modelMap.put("course", course);
 
-		return "teach-template";
+		return "teach-template-check";
 	}
 
 	@RequestMapping("/getByTemplateId/{templateId}")
@@ -70,9 +72,11 @@ public class TemplateController {
 	
 	@RequestMapping("/insertTemplateEntry")
 	@ResponseBody
-	public JsonResult insertTemplateEntry(@RequestBody TbTemplateEntry templateEntry) {
+	public JsonResult insertTemplateEntry(@RequestBody List<TbTemplateEntry> templateEntry) {
 		
-		templateService.insertTemplateEntry(templateEntry);
+		for (TbTemplateEntry tbTemplateEntry : templateEntry) {
+			templateService.insertTemplateEntry(tbTemplateEntry);
+		}
 		
 		return JsonResult.ok();
 	}

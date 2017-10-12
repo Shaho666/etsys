@@ -1,6 +1,5 @@
 package com.etsys.core.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import com.etsys.orm.pojo.TbTemplate;
 import com.etsys.orm.pojo.TbTemplateEntry;
 import com.etsys.orm.pojo.TbTemplateEntryExample;
 import com.etsys.orm.pojo.TbTemplateEntryExample.Criteria;
+import com.etsys.orm.pojo.TbTemplateExample;
 
 @Service
 public class TemplateServiceImpl implements TemplateService {
@@ -24,24 +24,33 @@ public class TemplateServiceImpl implements TemplateService {
 	private TbTemplateEntryMapper templateEntryMapper;
 
 	@Override
-	public List<TbTemplate> getTemplates(String teacherId, String courseId) {
+	public List<TbTemplate> getTemplate(String teacherId, String courseId) {
 
-		/* 在此处填入合适的代码 */
+		TbTemplateExample example = new TbTemplateExample();
 
-		return new ArrayList<>();
+		com.etsys.orm.pojo.TbTemplateExample.Criteria criteria = example.createCriteria();
+		criteria.andCourseIdEqualTo(courseId);
+		criteria.andTeacherIdEqualTo(teacherId);
+
+		List<TbTemplate> list = templateMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+
+		return null;
 	}
 
 	@Override
 	public void insertTemplateInfo(TbTemplate template) {
 
-		/* 在此处填入合适的代码 */
+		templateMapper.insert(template);
 
 	}
 
 	@Override
 	public void insertTemplateEntry(TbTemplateEntry templateEntry) {
 
-		/* 在此处填入合适的代码 */
+		templateEntryMapper.insert(templateEntry);
 
 	}
 
@@ -81,7 +90,7 @@ public class TemplateServiceImpl implements TemplateService {
 		Criteria criteria = example.createCriteria();
 		criteria.andTemIdEqualTo(templateId);
 
-		List<TbTemplateEntry> list = templateEntryMapper.selectByExample(example);
+		List<TbTemplateEntry> list = templateEntryMapper.selectByExampleWithBLOBs(example);
 		if (list != null && list.size() > 0) {
 			return list;
 		}

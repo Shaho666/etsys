@@ -19,9 +19,12 @@ import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.ExceptionUtil;
 import com.etsys.commons.utils.HttpClientUtil;
 import com.etsys.commons.utils.JsonUtils;
+import com.etsys.core.pojo.PageHelperResult;
 import com.etsys.core.pojo.Student;
+import com.etsys.core.service.CourseService;
 import com.etsys.core.service.StudentService;
 import com.etsys.core.service.TeacherCourseService;
+import com.etsys.orm.pojo.TbCourse;
 import com.etsys.orm.pojo.TbStudent;
 import com.etsys.orm.pojo.TbTeacherCourse;
 
@@ -34,6 +37,9 @@ public class StudentController {
 
 	@Autowired
 	private TeacherCourseService teacherCourseService;
+
+	@Autowired
+	private CourseService courseService;
 
 	@Value("${EDUCATION_ADMIN_BASE_URL}")
 	private String EDUCATION_ADMIN_BASE_URL;
@@ -61,11 +67,15 @@ public class StudentController {
 	@RequestMapping(value = "/getByCourseAndTeacher", method = RequestMethod.GET)
 	public String getStuByCourseAndTeacher(@RequestParam("teacherId") String teacherId,
 			@RequestParam("courseId") String courseId, @RequestParam("returnPage") String returnPage,
-			ModelMap modelMap) {
+			@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize, ModelMap modelMap) {
 
-		List<TbStudent> students = studentService.getByCourseAndTeacher(teacherId, courseId);
-		modelMap.put("students", students);
-		modelMap.put("courseId", courseId);
+		TbCourse course = courseService.getCourseById(courseId);
+
+		PageHelperResult<TbStudent> result = studentService.getByCourseAndTeacher(teacherId, courseId, pageNum, pageSize);
+
+		modelMap.put("students", result.getResultList());
+		modelMap.put("total", result.getTotal());
+		modelMap.put("course", course);
 
 		return returnPage;
 	}

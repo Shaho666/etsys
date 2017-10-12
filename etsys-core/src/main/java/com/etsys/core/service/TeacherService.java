@@ -8,4 +8,6 @@ public interface TeacherService {
 	
 	public TbTeacher getTbteacher(TbTeacher teacher);
 	
+	public TbTeacher getByTeacherId(String teacherId);
+	
 }

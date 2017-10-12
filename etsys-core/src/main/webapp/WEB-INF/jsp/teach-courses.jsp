@@ -24,24 +24,24 @@
 		<aside class="right-side"> <section class="content">
 		<div id="con-center" class="row" style="margin-bottom: 5px;">
 			<div style="padding: 20px 200px 10px;">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>课程编号</th>
-							<th>课程名称</th>
-							<th>课程时长</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${courseList }" var="course">
+				<table name="course" class="table table-hover">
+						<thead>
 							<tr>
-								<td>${course.courseId }</td>
-								<td>${course.courseName }</td>
-								<td>${course.courseTime }</td>
+								<th>课程编号</th>
+								<th>课程名称</th>
+								<th>课程时长</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<c:forEach items="${courseList }" var="course">
+								<tr>
+									<td>${course.courseId }</td>
+									<td>${course.courseName }</td>
+									<td>${course.courseTime }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				<br>
 			</div>
 		</div>

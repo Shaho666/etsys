@@ -15,41 +15,28 @@
 <script src="/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="/js/commons.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#add").click(function() {
-			$("#items").append($("#item").html());
-		});
-		$("#check").click(function() {
-			alert($("#items").html());
-		});
-		$("#commit").click(function() {
-			var json = SerializeToJson.formToJson($("form").serialize());
-			$.ajaxSetup({
-				contentType : 'application/json;charset=utf-8'
-			});
-			alert(json)
-			$.post('/template/insertTemplateEntry', json, function(data) {
-				if (data.status == 200) {
-					location.href = '/course/getByTeacherId?teacherId=' + "${sessionScope.teacher.teacherId }" + '&returnPage=teach-template';
-				} else {
+    $(document).ready(function() {
+	    $("#commit").click(function() {
+		    var json = "[";
+		    $.ajaxSetup({
+			    contentType : 'application/json;charset=utf-8'
+		    });
+		    $("form").each(function() {
+			    var jsonUnit = SerializeToJson.formToJson($(this).serialize());
+			    json += jsonUnit + ",";
+		    });
+		    json = json.substr(0,json.length - 1);
+		    json += "]";
+		    json = json.replace("{\"\"},", "");
+		    $.post('/template/insertTemplateEntry', json, function(data) {
+			    if (data.status == 200) {
+				    location.href = '/course/getByTeacherId?teacherId=' + "${sessionScope.teacher.teacherId }" + '&returnPage=teach-template';
+			    } else {
 
-				}
-			});
-		});
-
-		/* $("#add").click(function() {
-			$("#items").append(item);
-		});
-		$("#del").click(function() {
-			$("#items div:last").remove();
-		});
-		$("#score-add").click(function() {
-			$("#scores").append(scoreItem);
-		});
-		$("#score-del").click(function() {
-			$("#scores div:last").remove();
-		}); */
-	});
+			    }
+		    });
+	    });
+    });
 </script>
 </head>
 <body class="skin-black">
@@ -59,7 +46,7 @@
 		<jsp:include page="left-side-template.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
-		<div id="con-center" class="row" style="margin-bottom: 5px;">
+		<div id="con-center" class="row" style="margin-bottom: 5px;height:650px; overflow:auto">
 			<div style="padding: 20px 200px 10px;">
 				<p class="text-danger">添加考试模板，该门课程信息如下：</p>
 				<table class="table table-hover">
@@ -86,10 +73,30 @@
 					id="check">查看</button>
 			</div> -->
 			<div style="padding: 20px 200px 10px;">
-				<form action="/template/test">
+				<c:forEach var="i" begin="1" end="5" varStatus="status">
+					<form action="/template/test">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								模板编号：<input name="temId" type="text" readonly="readonly"
+									value="${template.temId }"> <br>
+							</div>
+							<div class="panel-body">
+								试题类型: <select class="combobox" name="temType">
+									<option value="1000">选择题</option>
+									<option value="1001">填空题</option>
+									<option value="1002">判断题</option>
+									<option value="1003">简答题</option>
+									<option value="1004">论述与分析题</option>
+								</select><br> <br> 试题数量：<input type="text" name="temNum">
+								<br> <br> 每题分值：<input type="text" name="temScore">
+							</div>
+						</div>
+					</form>
+				</c:forEach>
+				<%-- <form action="/template/test">
 					<div>
 						<br> 模板编号：<input name="temId" type="text" readonly="readonly"
-							value="${template.temId }"> <br><br> 试题类型: <select
+							value="${template.temId }"> <br> <br> 试题类型: <select
 							class="combobox" name="temType">
 							<option value="1000">选择题</option>
 							<option value="1001">填空题</option>
@@ -99,7 +106,7 @@
 						</select><br> <br> 试题数量：<input type="text" name="temNum">
 						<br> <br> 每题分值：<input type="text" name="temScore">
 					</div>
-				</form>
+				</form> --%>
 			</div>
 			<div style="padding: 20px 200px 10px;">
 				<button class="btn btn-primary btn-sm" id="commit">提交</button>

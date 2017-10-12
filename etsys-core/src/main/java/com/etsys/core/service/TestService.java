@@ -14,4 +14,6 @@ public interface TestService {
 	
 	public List<TbTest> getByTeacherAndCourse(String teacherId, String courseId);
 	
+	public List<TbTest> getByStudentAndCourse(String studentId);
+	
 }

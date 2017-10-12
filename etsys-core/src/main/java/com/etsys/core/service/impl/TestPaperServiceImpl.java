@@ -16,40 +16,55 @@ public class TestPaperServiceImpl implements TestPaperService {
 
 	@Autowired
 	private TbTestPaperMapper testPaperMapper;
-	
+
 	@Override
 	public List<TbTestPaper> getByCourseAndStudent(String courseId, String className) {
-		
+
 		TbTestPaperExample example = new TbTestPaperExample();
-		
+
 		Criteria criteria = example.createCriteria();
 		criteria.andCourseIdEqualTo(courseId);
 		criteria.andStuIdEqualTo(className);
 		criteria.andTpStateEqualTo(4);
-		
+
 		List<TbTestPaper> list = testPaperMapper.selectByExample(example);
-		if(list != null && list.size() > 0) {
+		if (list != null && list.size() > 0) {
 			return list;
 		}
-		
+
 		return list;
 	}
 
 	@Override
 	public Integer updateTestPaper(TbTestPaper testPaper) {
-		
+
 		/* 在此处填入合适的代码 */
-		
+
 		return 0;
 	}
 
 	@Override
 	public Integer insertTestPaper(TbTestPaper testPaper) {
-		
+
 		/* 在此处填入合适的代码 */
-		
+
 		return 0;
 	}
-	
+
+	@Override
+	public List<TbTestPaper> getByStudent(String studentId) {
+
+		TbTestPaperExample example = new TbTestPaperExample();
+
+		Criteria criteria = example.createCriteria();
+		criteria.andStuIdEqualTo(studentId);
+
+		List<TbTestPaper> list = testPaperMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+
+		return null;
+	}
 
 }

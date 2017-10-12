@@ -12,4 +12,6 @@ public interface TestPaperService {
 	
 	public Integer insertTestPaper(TbTestPaper testPaper);
 	
+	public List<TbTestPaper> getByStudent(String studentId);
+	
 }

@@ -22,11 +22,33 @@
 		<jsp:include page="left-side.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
-		<div id="con-center" class="row" style="margin-bottom: 5px;">
-		    <div style="padding: 20px 200px 10px;">
-				<h4 class="text-danger" align="center">按课程查看</h4>
+		<div id="con-center" class="row" style="margin-bottom: 5px;height:650px; overflow:auto">
+			<div style="padding: 0px 200px 10px;">
+				<p class="text-danger">该门课程信息如下：</p>
+				<table class="table table-hover">
+					<thead>
+						<tr class="warning">
+							<th>课程编号</th>
+							<th>课程名称</th>
+							<th>课程时长</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="success">
+							<td>${course.courseId }</td>
+							<td>${course.courseName }</td>
+							<td>${course.courseTime }</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<div style="padding: 20px 200px 10px;">
+			<div style="padding: 0px 200px 10px;" align="left">
+				<form action="/data-sync">
+					<input class="btn btn-primary btn-sm" type="submit"
+						value="数据有误？点我刷新">
+				</form>
+			</div>
+			<div style="padding: 0px 200px 10px;">
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -46,16 +68,22 @@
 					</tbody>
 				</table>
 				<br>
+				<div align="center">
+					<ul class="pagination">
+					    
+						<li><a href="#">&laquo;</a></li>
+						<c:forEach var="i" begin="1" end="${total / 10 }"
+							varStatus="status">
+							<li><a
+								href="/student/getByCourseAndTeacher?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }&returnPage=teach-stus-check&pageNum=${status.count}">${status.count}</a></li>
+						</c:forEach>
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
+				<br>
 			</div>
 		</div>
-		</section>
-		<div style="padding: 0px 500px 10px;">
-			<form action="/data-sync">
-				<input class="btn btn-info btn-block" type="submit"
-					value="数据有误？点我刷新">
-			</form>
-		</div>
-		</aside>
+		</section> </aside>
 		<!-- /.right-side -->
 
 	</div>

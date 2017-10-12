@@ -43,4 +43,12 @@ public class TeacherServiceImpl implements TeacherService {
 		return null;
 	}
 
+	@Override
+	public TbTeacher getByTeacherId(String teacherId) {
+		
+		TbTeacher teacher = teacherMapper.selectByPrimaryKey(teacherId);
+		
+		return teacher;
+	}
+
 }

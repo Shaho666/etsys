@@ -15,6 +15,7 @@ com\etsys\core\controller\TestPaperController.class
 com\etsys\core\service\impl\StudentServiceImpl.class
 com\etsys\core\service\impl\SignInServiceImpl.class
 com\etsys\core\interceptor\SyncHandlerInterceptor.class
+com\etsys\core\pojo\PageHelperResult.class
 com\etsys\core\service\QuestionBankService.class
 com\etsys\core\service\TeacherService.class
 com\etsys\core\controller\SignInController.class
@@ -25,15 +26,18 @@ com\etsys\core\service\TestPaperService.class
 com\etsys\core\controller\CourseController.class
 com\etsys\core\service\CourseService.class
 com\etsys\core\service\impl\ScoreServiceImpl.class
+com\etsys\core\controller\TestController.class
 com\etsys\core\pojo\TestPaperTemplate.class
 com\etsys\core\controller\ScoreController.class
 com\etsys\core\service\ScoreService.class
 com\etsys\core\pojo\Instructor.class
+com\etsys\core\service\TestService.class
 com\etsys\core\controller\QuestionBankController.class
 com\etsys\core\service\impl\TeacherCourseServiceImpl.class
 com\etsys\core\controller\TeacherCourseController.class
 com\etsys\core\service\impl\QuestionTypeServiceImpl.class
 com\etsys\core\service\impl\SignUpServiceImpl.class
+com\etsys\core\service\impl\TestServiceImpl.class
 com\etsys\core\service\QuestionTypeService.class
 com\etsys\core\controller\SignUpController.class
 com\etsys\core\pojo\Course.class

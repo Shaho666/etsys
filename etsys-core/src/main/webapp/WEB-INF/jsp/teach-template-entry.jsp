@@ -59,7 +59,7 @@
 		<jsp:include page="left-side-template.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
-		<div id="con-center" class="row" style="margin-bottom: 5px;">
+		<div id="con-center" class="row" style="margin-bottom: 5px;height:650px; overflow:auto">
 			<div style="padding: 20px 200px 10px;">
 				<p class="text-danger">该门课程信息如下：</p>
 				<table class="table table-hover">

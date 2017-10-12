@@ -14,56 +14,6 @@
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="/js/commons.js"></script>
-<script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$("#add").click(function() {
-							$("#items").append($("#item").html());
-						});
-						$("#check").click(function() {
-							alert($("#items").html());
-						});
-						$("#commit")
-								.click(
-										function() {
-											var json = SerializeToJson
-													.formToJson($("form")
-															.serialize());
-											$
-													.ajaxSetup({
-														contentType : 'application/json;charset=utf-8'
-													});
-											alert(json)
-											$
-													.post(
-															'/template/insertTemplateEntry',
-															json,
-															function(data) {
-																if (data.status == 200) {
-																	location.href = '/course/getByTeacherId?teacherId='
-																			+ "${sessionScope.teacher.teacherId }"
-																			+ '&returnPage=teach-template';
-																} else {
-
-																}
-															});
-										});
-
-						/* $("#add").click(function() {
-							$("#items").append(item);
-						});
-						$("#del").click(function() {
-							$("#items div:last").remove();
-						});
-						$("#score-add").click(function() {
-							$("#scores").append(scoreItem);
-						});
-						$("#score-del").click(function() {
-							$("#scores div:last").remove();
-						}); */
-					});
-</script>
 </head>
 <body class="skin-black">
 	<jsp:include page="up-side.jsp"></jsp:include>
@@ -72,7 +22,7 @@
 		<jsp:include page="left-side-template.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
-		<div id="con-center" class="row" style="margin-bottom: 5px;">
+		<div id="con-center" class="row" style="margin-bottom: 5px;height:650px; overflow:auto">
 			<div style="padding: 20px 200px 10px;">
 				<p class="text-danger">该门课程信息如下：</p>
 				<table class="table table-hover">
@@ -109,7 +59,7 @@
 								<td><a href="/template/getByTemplateId/${template.temId }">${template.temId }</a></td>
 								<td>${template.courseId }</td>
 								<td>${template.teacherId }</td>
-								<td>${template.created }</td>
+								<td><fmt:formatDate value="${template.created }"/></td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -7,7 +7,7 @@ import com.etsys.orm.pojo.TbTemplateEntry;
 
 public interface TemplateService {
 
-	public List<TbTemplate> getTemplates(String teacherId, String courseId);
+	public List<TbTemplate> getTemplate(String teacherId, String courseId);
 	
 	public List<TbTemplateEntry> getEntries(String templateId);
 
