@@ -66,4 +66,12 @@ public class QuestionBankServiceImpl implements QuestionBankService {
 		return result;
 	}
 
+	@Override
+	public TbQuestionBankWithBLOBs getQuestionBankById(String questionBankId) {
+		
+		TbQuestionBankWithBLOBs question = questionBankMapper.selectByPrimaryKey(questionBankId);
+		
+		return question;
+	}
+
 }

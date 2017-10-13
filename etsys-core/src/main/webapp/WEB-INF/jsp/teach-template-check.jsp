@@ -22,7 +22,8 @@
 		<jsp:include page="left-side-template.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
-		<div id="con-center" class="row" style="margin-bottom: 5px;height:650px; overflow:auto">
+		<div id="con-center" class="row"
+			style="margin-bottom: 5px; height: 650px; overflow: auto">
 			<div style="padding: 20px 200px 10px;">
 				<p class="text-danger">该门课程信息如下：</p>
 				<table class="table table-hover">
@@ -56,10 +57,11 @@
 					<tbody>
 						<c:forEach items="${templates }" var="template">
 							<tr class="success">
-								<td><a href="/template/getByTemplateId/${template.temId }">${template.temId }</a></td>
+								<td><a
+									href="/template/getByTemplateId?templateId=${template.temId }&courseId=${course.courseId }">${template.temId }</a></td>
 								<td>${template.courseId }</td>
 								<td>${template.teacherId }</td>
-								<td><fmt:formatDate value="${template.created }"/></td>
+								<td><fmt:formatDate value="${template.created }" /></td>
 							</tr>
 						</c:forEach>
 					</tbody>

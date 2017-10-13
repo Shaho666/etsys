@@ -6,6 +6,8 @@
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="course_id" property="courseId" jdbcType="VARCHAR" />
     <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+    <result column="template_id" property="templateId" jdbcType="VARCHAR" />
+    <result column="test_degree" property="testDegree" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    test_id, created, course_id, teacher_id
+    test_id, created, course_id, teacher_id, template_id, test_degree
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.etsys.orm.pojo.TbTestExample" >
     select
@@ -100,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="com.etsys.orm.pojo.TbTest" >
     insert into tb_test (test_id, created, course_id, 
-      teacher_id)
+      teacher_id, template_id, test_degree
+      )
     values (#{testId,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, #{courseId,jdbcType=VARCHAR}, 
-      #{teacherId,jdbcType=VARCHAR})
+      #{teacherId,jdbcType=VARCHAR}, #{templateId,jdbcType=VARCHAR}, #{testDegree,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.etsys.orm.pojo.TbTest" >
     insert into tb_test
@@ -119,6 +123,12 @@
       <if test="teacherId != null" >
         teacher_id,
       </if>
+      <if test="templateId != null" >
+        template_id,
+      </if>
+      <if test="testDegree != null" >
+        test_degree,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="testId != null" >
@@ -132,6 +142,12 @@
       </if>
       <if test="teacherId != null" >
         #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null" >
+        #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="testDegree != null" >
+        #{testDegree,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -156,6 +172,12 @@
       <if test="record.teacherId != null" >
         teacher_id = #{record.teacherId,jdbcType=VARCHAR},
       </if>
+      <if test="record.templateId != null" >
+        template_id = #{record.templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testDegree != null" >
+        test_degree = #{record.testDegree,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +188,9 @@
     set test_id = #{record.testId,jdbcType=VARCHAR},
       created = #{record.created,jdbcType=TIMESTAMP},
       course_id = #{record.courseId,jdbcType=VARCHAR},
-      teacher_id = #{record.teacherId,jdbcType=VARCHAR}
+      teacher_id = #{record.teacherId,jdbcType=VARCHAR},
+      template_id = #{record.templateId,jdbcType=VARCHAR},
+      test_degree = #{record.testDegree,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +207,12 @@
       <if test="teacherId != null" >
         teacher_id = #{teacherId,jdbcType=VARCHAR},
       </if>
+      <if test="templateId != null" >
+        template_id = #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="testDegree != null" >
+        test_degree = #{testDegree,jdbcType=INTEGER},
+      </if>
     </set>
     where test_id = #{testId,jdbcType=VARCHAR}
   </update>
@@ -190,7 +220,9 @@
     update tb_test
     set created = #{created,jdbcType=TIMESTAMP},
       course_id = #{courseId,jdbcType=VARCHAR},
-      teacher_id = #{teacherId,jdbcType=VARCHAR}
+      teacher_id = #{teacherId,jdbcType=VARCHAR},
+      template_id = #{templateId,jdbcType=VARCHAR},
+      test_degree = #{testDegree,jdbcType=INTEGER}
     where test_id = #{testId,jdbcType=VARCHAR}
   </update>
 </mapper>

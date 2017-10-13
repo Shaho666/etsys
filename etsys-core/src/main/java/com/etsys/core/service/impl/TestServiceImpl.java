@@ -46,8 +46,16 @@ public class TestServiceImpl implements TestService {
 
 	@Override
 	public List<TbTest> getByTeacherAndCourse(String teacherId, String courseId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		TbTestExample example = new TbTestExample();
+		
+		com.etsys.orm.pojo.TbTestExample.Criteria criteria = example.createCriteria();
+		criteria.andCourseIdEqualTo(courseId);
+		criteria.andTeacherIdEqualTo(teacherId);
+		
+		List<TbTest> list = testMapper.selectByExample(example);
+		
+		return list;
 	}
 
 	@Override

@@ -374,6 +374,136 @@ public class TbTestExample {
             addCriterion("teacher_id not between", value1, value2, "teacherId");
             return (Criteria) this;
         }
+
+        public Criteria andTemplateIdIsNull() {
+            addCriterion("template_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdIsNotNull() {
+            addCriterion("template_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdEqualTo(String value) {
+            addCriterion("template_id =", value, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdNotEqualTo(String value) {
+            addCriterion("template_id <>", value, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdGreaterThan(String value) {
+            addCriterion("template_id >", value, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdGreaterThanOrEqualTo(String value) {
+            addCriterion("template_id >=", value, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdLessThan(String value) {
+            addCriterion("template_id <", value, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdLessThanOrEqualTo(String value) {
+            addCriterion("template_id <=", value, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdLike(String value) {
+            addCriterion("template_id like", value, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdNotLike(String value) {
+            addCriterion("template_id not like", value, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdIn(List<String> values) {
+            addCriterion("template_id in", values, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdNotIn(List<String> values) {
+            addCriterion("template_id not in", values, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdBetween(String value1, String value2) {
+            addCriterion("template_id between", value1, value2, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateIdNotBetween(String value1, String value2) {
+            addCriterion("template_id not between", value1, value2, "templateId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeIsNull() {
+            addCriterion("test_degree is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeIsNotNull() {
+            addCriterion("test_degree is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeEqualTo(Integer value) {
+            addCriterion("test_degree =", value, "testDegree");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeNotEqualTo(Integer value) {
+            addCriterion("test_degree <>", value, "testDegree");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeGreaterThan(Integer value) {
+            addCriterion("test_degree >", value, "testDegree");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("test_degree >=", value, "testDegree");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeLessThan(Integer value) {
+            addCriterion("test_degree <", value, "testDegree");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeLessThanOrEqualTo(Integer value) {
+            addCriterion("test_degree <=", value, "testDegree");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeIn(List<Integer> values) {
+            addCriterion("test_degree in", values, "testDegree");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeNotIn(List<Integer> values) {
+            addCriterion("test_degree not in", values, "testDegree");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeBetween(Integer value1, Integer value2) {
+            addCriterion("test_degree between", value1, value2, "testDegree");
+            return (Criteria) this;
+        }
+
+        public Criteria andTestDegreeNotBetween(Integer value1, Integer value2) {
+            addCriterion("test_degree not between", value1, value2, "testDegree");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

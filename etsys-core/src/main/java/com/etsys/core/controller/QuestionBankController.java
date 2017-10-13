@@ -43,25 +43,25 @@ public class QuestionBankController {
 
 	@RequestMapping("/showPojoPage/{courseId}")
 	public String showPojoPage(@PathVariable String courseId, ModelMap modelMap) {
-		
+
 		TbCourse course = courseService.getCourseById(courseId);
 		modelMap.put("course", course);
 
 		return "teach-ques-bank-pojo";
 	}
-	
+
 	@RequestMapping("/insertBankEntry")
 	@ResponseBody
 	public JsonResult insertBankEntry(@RequestBody TbQuestionBankWithBLOBs questionBank) {
-		
+
 		questionBank.setQueId("que" + IdUtils.genItemId());
 		questionBank.setQueState(1);
-		
+
 		questionBankService.insertBankEntry(questionBank);
-		
+
 		return JsonResult.ok();
 	}
-	
+
 	@RequestMapping("/deleteBankEntryById")
 	public String deleteBankEntryById(@RequestParam("questionBankId") String questionBankId,
 			@RequestParam("courseId") String courseId) {
@@ -88,6 +88,18 @@ public class QuestionBankController {
 		questionBankService.updateBankEntry(questionBank);
 
 		return "redirect:/questionBank/getBankByCourse/" + questionBank.getCourseId();
+	}
+
+	@RequestMapping("/getEntryById")
+	public String getEntryById(@RequestParam String bankEntryId, @RequestParam String courseId, ModelMap modelMap) {
+
+		TbCourse course = courseService.getCourseById(courseId);
+
+		TbQuestionBankWithBLOBs question = questionBankService.getQuestionBankById(bankEntryId);
+		modelMap.put("course", course);
+		modelMap.put("question", question);
+
+		return "teach-ques-bank-detail";
 	}
 
 }

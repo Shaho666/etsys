@@ -28,6 +28,7 @@
 		    json = json.substr(0,json.length - 1);
 		    json += "]";
 		    json = json.replace("{\"\"},", "");
+		    
 		    $.post('/template/insertTemplateEntry', json, function(data) {
 			    if (data.status == 200) {
 				    location.href = '/course/getByTeacherId?teacherId=' + "${sessionScope.teacher.teacherId }" + '&returnPage=teach-template';

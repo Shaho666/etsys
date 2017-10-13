@@ -29,7 +29,7 @@
 		<jsp:include page="left-side-ques-bank.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
-		<div id="con-center" class="row" style="margin-bottom: 5px;">
+		<div id="con-center" class="row" style="margin-bottom: 5px;height: 650px; overflow: auto">
 			<div style="padding: 20px 200px 10px;">
 				<p class="text-danger">该门课程信息如下：</p>
 				<table class="table table-hover">
@@ -73,7 +73,7 @@
 						        <td>${entry.queDegree }</td>
 						        <td>${entry.queState }</td>
 						        <td>${entry.courseId }</td>
-						        <td><a href="#">查看</a></td>
+						        <td><a href="/questionBank/getEntryById?bankEntryId=${entry.queId }&courseId=${course.courseId }">查看</a></td>
 						    </tr>
 						</c:forEach>
 					</tbody>

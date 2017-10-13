@@ -9,4 +9,10 @@ var SerializeToJson = {
 		var json = decodeURIComponent(data, true);
 		return json;
 	},
+	
+	JsonStringToJson : function(data) {
+		var json = decodeURIComponent(data, true);
+		return json;
+	}
+	
 };

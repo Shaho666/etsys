@@ -62,7 +62,7 @@
 		<div id="con-center" class="row" style="margin-bottom: 5px;height:650px; overflow:auto">
 			<div style="padding: 20px 200px 10px;">
 				<p class="text-danger">该门课程信息如下：</p>
-				<table class="table table-hover">
+				<table class="table table-hover" border="1">
 					<thead>
 						<tr class="warning">
 							<th>课程编号</th>
@@ -81,10 +81,10 @@
 			</div>
 			<div style="padding: 20px 200px 10px;">
 				<p class="text-danger">该门课程的试题模板详细信息如下：</p>
-				<table class="table table-hover">
+				<table class="table table-hover" border="1">
 					<thead>
-						<tr class="warning">
-							<th>题目类型</th>
+						<tr align="center" class="warning">
+							<th align="center">题目类型</th>
 							<th>题目数量</th>
 							<th>题目分值</th>
 						</tr>
@@ -92,7 +92,11 @@
 					<tbody>
 						<c:forEach items="${entries }" var="entry">
 						    <tr class="success">
-						        <td>${entry.temType }</td>
+						        <td><c:if test="${entry.temType == 1000 }">选择题</c:if>
+						            <c:if test="${entry.temType == 1001 }">填空题</c:if>
+						            <c:if test="${entry.temType == 1002 }">判断题</c:if>
+						            <c:if test="${entry.temType == 1003 }">简答题</c:if>
+						            <c:if test="${entry.temType == 1004 }">论述与分析题</c:if></td>
 						        <td>${entry.temNum }</td>
 						        <td>${entry.temScore }</td>
 						    </tr>

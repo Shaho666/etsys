@@ -37,13 +37,13 @@
 			<h4 align="center">登录</h4>
 			<div class="input-group">
 				<span class="input-group-addon">登录用户名</span> <input name="stuId"
-					type="text" value="stu23774156" class="form-control"
+					type="text" value="stu18250900" class="form-control"
 					placeholder="twitterhandle" />
 			</div>
 			<br>
 			<div class="input-group">
 				<span class="input-group-addon">登录密码</span> <input name="stuPassword"
-					type="password" value="stu23774156" class="form-control"
+					type="password" value="stu18250900" class="form-control"
 					placeholder="twitterhandle" />
 			</div>
 			<br>

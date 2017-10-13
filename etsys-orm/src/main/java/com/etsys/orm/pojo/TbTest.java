@@ -11,6 +11,10 @@ public class TbTest {
 
     private String teacherId;
 
+    private String templateId;
+
+    private Integer testDegree;
+
     public String getTestId() {
         return testId;
     }
@@ -41,5 +45,21 @@ public class TbTest {
 
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId == null ? null : teacherId.trim();
+    }
+
+    public String getTemplateId() {
+        return templateId;
+    }
+
+    public void setTemplateId(String templateId) {
+        this.templateId = templateId == null ? null : templateId.trim();
+    }
+
+    public Integer getTestDegree() {
+        return testDegree;
+    }
+
+    public void setTestDegree(Integer testDegree) {
+        this.testDegree = testDegree;
     }
 }

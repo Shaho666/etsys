@@ -11,6 +11,8 @@ public class TbTestPaper {
 
     private String courseId;
 
+    private String testId;
+
     private String tpContent;
 
     public String getTpId() {
@@ -51,6 +53,14 @@ public class TbTestPaper {
 
     public void setCourseId(String courseId) {
         this.courseId = courseId == null ? null : courseId.trim();
+    }
+
+    public String getTestId() {
+        return testId;
+    }
+
+    public void setTestId(String testId) {
+        this.testId = testId == null ? null : testId.trim();
     }
 
     public String getTpContent() {

@@ -7,6 +7,7 @@
     <result column="tp_state" property="tpState" jdbcType="INTEGER" />
     <result column="stu_id" property="stuId" jdbcType="VARCHAR" />
     <result column="course_id" property="courseId" jdbcType="VARCHAR" />
+    <result column="test_id" property="testId" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.etsys.orm.pojo.TbTestPaper" extends="BaseResultMap" >
     <result column="tp_content" property="tpContent" jdbcType="LONGVARCHAR" />
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    tp_id, tp_name, tp_state, stu_id, course_id
+    tp_id, tp_name, tp_state, stu_id, course_id, test_id
   </sql>
   <sql id="Blob_Column_List" >
     tp_content
@@ -125,11 +126,11 @@
   </delete>
   <insert id="insert" parameterType="com.etsys.orm.pojo.TbTestPaper" >
     insert into tb_test_paper (tp_id, tp_name, tp_state, 
-      stu_id, course_id, tp_content
-      )
+      stu_id, course_id, test_id, 
+      tp_content)
     values (#{tpId,jdbcType=VARCHAR}, #{tpName,jdbcType=VARCHAR}, #{tpState,jdbcType=INTEGER}, 
-      #{stuId,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, #{tpContent,jdbcType=LONGVARCHAR}
-      )
+      #{stuId,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, #{testId,jdbcType=VARCHAR}, 
+      #{tpContent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.etsys.orm.pojo.TbTestPaper" >
     insert into tb_test_paper
@@ -148,6 +149,9 @@
       </if>
       <if test="courseId != null" >
         course_id,
+      </if>
+      <if test="testId != null" >
+        test_id,
       </if>
       <if test="tpContent != null" >
         tp_content,
@@ -168,6 +172,9 @@
       </if>
       <if test="courseId != null" >
         #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="testId != null" >
+        #{testId,jdbcType=VARCHAR},
       </if>
       <if test="tpContent != null" >
         #{tpContent,jdbcType=LONGVARCHAR},
@@ -198,6 +205,9 @@
       <if test="record.courseId != null" >
         course_id = #{record.courseId,jdbcType=VARCHAR},
       </if>
+      <if test="record.testId != null" >
+        test_id = #{record.testId,jdbcType=VARCHAR},
+      </if>
       <if test="record.tpContent != null" >
         tp_content = #{record.tpContent,jdbcType=LONGVARCHAR},
       </if>
@@ -213,6 +223,7 @@
       tp_state = #{record.tpState,jdbcType=INTEGER},
       stu_id = #{record.stuId,jdbcType=VARCHAR},
       course_id = #{record.courseId,jdbcType=VARCHAR},
+      test_id = #{record.testId,jdbcType=VARCHAR},
       tp_content = #{record.tpContent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -224,7 +235,8 @@
       tp_name = #{record.tpName,jdbcType=VARCHAR},
       tp_state = #{record.tpState,jdbcType=INTEGER},
       stu_id = #{record.stuId,jdbcType=VARCHAR},
-      course_id = #{record.courseId,jdbcType=VARCHAR}
+      course_id = #{record.courseId,jdbcType=VARCHAR},
+      test_id = #{record.testId,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -244,6 +256,9 @@
       <if test="courseId != null" >
         course_id = #{courseId,jdbcType=VARCHAR},
       </if>
+      <if test="testId != null" >
+        test_id = #{testId,jdbcType=VARCHAR},
+      </if>
       <if test="tpContent != null" >
         tp_content = #{tpContent,jdbcType=LONGVARCHAR},
       </if>
@@ -256,6 +271,7 @@
       tp_state = #{tpState,jdbcType=INTEGER},
       stu_id = #{stuId,jdbcType=VARCHAR},
       course_id = #{courseId,jdbcType=VARCHAR},
+      test_id = #{testId,jdbcType=VARCHAR},
       tp_content = #{tpContent,jdbcType=LONGVARCHAR}
     where tp_id = #{tpId,jdbcType=VARCHAR}
   </update>
@@ -264,7 +280,8 @@
     set tp_name = #{tpName,jdbcType=VARCHAR},
       tp_state = #{tpState,jdbcType=INTEGER},
       stu_id = #{stuId,jdbcType=VARCHAR},
-      course_id = #{courseId,jdbcType=VARCHAR}
+      course_id = #{courseId,jdbcType=VARCHAR},
+      test_id = #{testId,jdbcType=VARCHAR}
     where tp_id = #{tpId,jdbcType=VARCHAR}
   </update>
 </mapper>

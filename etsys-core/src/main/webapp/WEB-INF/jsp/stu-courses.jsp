@@ -26,7 +26,7 @@
 			<div style="padding: 20px 200px 10px;">
 				<table class="table table-hover">
 					<thead>
-						<tr>
+						<tr class="info">
 							<td>课程编号</td>
 							<td>课程名称</td>
 							<td>课程时长</td>
@@ -34,9 +34,11 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${courseList }" var="course">
-							<td>${course.courseId }</td>
-							<td>${course.courseName }</td>
-							<td>${course.courseTime }</td>
+							<tr class="success">
+								<td>${course.courseId }</td>
+								<td>${course.courseName }</td>
+								<td>${course.courseTime }</td>
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>

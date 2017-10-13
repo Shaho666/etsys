@@ -18,7 +18,7 @@
 <!-- search form -->
 <form action="#" method="get" class="sidebar-form">
 	<div class="input-group">
-		<input type="text" name="q" class="form-control"
+		<input type="text" class="form-control"
 			placeholder="Search..." /> <span class="input-group-btn">
 			<button type='submit' name='seach' id='search-btn'
 				class="btn btn-flat">
@@ -56,26 +56,30 @@
 			&nbsp;&nbsp;<i class="fa fa-globe"></i> <span>新增模板</span>
 	</a></li>
 	<li><a
-		href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-stu-score">
+		href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-score">
 			<i class="fa fa-glass"></i> <span>学生成绩</span>
 	</a></li>
 
 	<li data-toggle="collapse" data-target="#collapseTestPaper"><a
 		href="#"> <i class="fa fa-glass"></i> <span>考试管理</span>
 	</a></li>
-	<li id="collapseTestPaper" class="collapse"><a onclick="" href="#">
-			&nbsp;&nbsp;<i class="fa fa-globe"></i> <span>往年试卷</span>
-	</a><a href="#"> &nbsp;&nbsp;<i class="fa fa-globe"></i> <span>批改试卷</span>
+	<li id="collapseTestPaper" class="collapse"><a onclick=""
+		href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-test-paper">
+			&nbsp;&nbsp;<i class="fa fa-globe"></i> <span>发布考试</span>
+	</a><a onclick=""
+		href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-test-check">
+			&nbsp;&nbsp;<i class="fa fa-globe"></i> <span>查看考试</span>
+	</a><a onclick="" href="#"> &nbsp;&nbsp;<i class="fa fa-globe"></i> <span>批改试卷</span>
+	</a><a href="#"> &nbsp;&nbsp;<i class="fa fa-globe"></i> <span>试卷回顾</span>
 	</a></li>
 
-	<li data-toggle="collapse" data-target="#collapseBank"><a href="#">
+	<li data-toggle="collapse" data-target="#collapseBank"><a href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-ques-bank">
 			<i class="fa fa-glass"></i> <span>题库设置</span>
 	</a></li>
-	<li id="collapseBank" class="collapse in"><a onclick=""
+	<%-- <li id="collapseBank" class="collapse in"><a onclick=""
 		href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-ques-bank">
 			&nbsp;&nbsp;<i class="fa fa-globe"></i> <span>查看题库</span>
-	</a><a href="#"> &nbsp;&nbsp;<i class="fa fa-globe"></i> <span>新增题库</span>
-	</a></li>
+	</a></li> --%>
 
 </ul>
 </section> <!-- /.sidebar --> </aside>

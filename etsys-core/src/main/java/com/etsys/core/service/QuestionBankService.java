@@ -17,4 +17,6 @@ public interface QuestionBankService {
 	
 	public Integer insertBankEntry(TbQuestionBankWithBLOBs questionBank);
 	
+	public TbQuestionBankWithBLOBs getQuestionBankById(String questionBankId);
+	
 }

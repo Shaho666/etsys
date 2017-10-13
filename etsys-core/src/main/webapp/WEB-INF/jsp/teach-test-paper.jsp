@@ -7,13 +7,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/font-awesome.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/commons.js"></script>
 </head>
 <body class="skin-black">
 
 	<jsp:include page="up-side.jsp"></jsp:include>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 
-		<jsp:include page="left-side.jsp"></jsp:include>
+		<jsp:include page="left-side-test-paper.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
 		<div id="con-center" class="row" style="margin-bottom: 5px;">
@@ -33,7 +40,7 @@
 						<c:forEach items="${courseList }" var="course">
 							<tr>
 								<td><a
-									href="/student/getByCourseAndTeacher?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }&returnPage=teach-test-paper-check">${course.courseId }</a></td>
+									href="/test/showCreatePage?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }">${course.courseId }</a></td>
 								<td>${course.courseName }</td>
 								<td>${course.courseTime }</td>
 							</tr>

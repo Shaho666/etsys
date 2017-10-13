@@ -17,15 +17,24 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(":button").click(function() {
-			var json = SerializeToJson.formToJson($("form").serialize());
+			var serialized = $("form").serializeArray();
 			$.ajaxSetup({
 				contentType : 'application/json;charset=utf-8'
 			});
+			var json = "";
+			for(var i = 0; i < serialized.length; i++) {
+				json += "\"" + serialized[i].name + "\":\"" + serialized[i].value.replace(/\r\n/g,"<br>") + "\",";
+			}
+			json = json.substr(0,json.length - 1);
+			json = "{" + json + "}";
+			
+			json = SerializeToJson.JsonStringToJson(json);
+			alert(json)
 			$.post('/questionBank/insertBankEntry', json, function(data) {
 				if (data.status == 200) {
 					location.href = '/questionBank/getBankByCourse/' + "${course.courseId }";
 				} else {
-					
+
 				}
 			});
 		});
@@ -63,24 +72,26 @@
 			<div style="padding: 20px 200px 10px;">
 				<form action="/template/test">
 					<div>
-						<br> 题目类型: <select class="combobox" name="queType">
+						<br> 题目类型: <select id="queType" class="combobox"
+							name="queType">
 							<option value="1000">选择题</option>
 							<option value="1001">填空题</option>
 							<option value="1002">判断题</option>
 							<option value="1003">简答题</option>
 							<option value="1004">论述与分析题</option>
-						</select><br> <br> 题目难度: <select class="combobox"
+						</select><br> <br> 题目难度: <select id="queDegree" class="combobox"
 							name="queDegree">
 							<option value="1">简单</option>
 							<option value="2">较简单</option>
 							<option value="3">中等</option>
 							<option value="4">较难</option>
 							<option value="5">难</option>
-						</select><br> <br> 课程编号： <input type="text" readonly="readonly"
-							value="${course.courseId }" name="courseId"> <br> <br> 题干描述：
-						<textarea rows="5" cols="100" name="queContent"></textarea>
+						</select><br> <br> 课程编号： <input id="courseId" type="text"
+							readonly="readonly" value="${course.courseId }" name="courseId">
+						<br> <br> 题干描述：
+						<textarea id="queContent" rows="5" cols="100" name="queContent"></textarea>
 						<br> <br> 答案描述：
-						<textarea rows="5" cols="100" name="queAnswer"></textarea>
+						<textarea id="queAnswer" rows="5" cols="100" name="queAnswer"></textarea>
 					</div>
 				</form>
 			</div>
