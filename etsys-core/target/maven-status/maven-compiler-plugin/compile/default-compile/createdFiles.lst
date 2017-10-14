@@ -29,6 +29,7 @@ com\etsys\core\controller\CourseController.class
 com\etsys\core\service\CourseService.class
 com\etsys\core\service\impl\ScoreServiceImpl.class
 com\etsys\core\controller\TestController.class
+com\etsys\core\pojo\TpContentEntry.class
 com\etsys\core\controller\ScoreController.class
 com\etsys\core\service\ScoreService.class
 com\etsys\core\service\TestService.class

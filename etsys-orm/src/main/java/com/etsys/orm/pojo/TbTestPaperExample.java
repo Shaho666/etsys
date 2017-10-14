@@ -174,73 +174,63 @@ public class TbTestPaperExample {
             return (Criteria) this;
         }
 
-        public Criteria andTpNameIsNull() {
-            addCriterion("tp_name is null");
+        public Criteria andTpTypeIsNull() {
+            addCriterion("tp_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameIsNotNull() {
-            addCriterion("tp_name is not null");
+        public Criteria andTpTypeIsNotNull() {
+            addCriterion("tp_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameEqualTo(String value) {
-            addCriterion("tp_name =", value, "tpName");
+        public Criteria andTpTypeEqualTo(Integer value) {
+            addCriterion("tp_type =", value, "tpType");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameNotEqualTo(String value) {
-            addCriterion("tp_name <>", value, "tpName");
+        public Criteria andTpTypeNotEqualTo(Integer value) {
+            addCriterion("tp_type <>", value, "tpType");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameGreaterThan(String value) {
-            addCriterion("tp_name >", value, "tpName");
+        public Criteria andTpTypeGreaterThan(Integer value) {
+            addCriterion("tp_type >", value, "tpType");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameGreaterThanOrEqualTo(String value) {
-            addCriterion("tp_name >=", value, "tpName");
+        public Criteria andTpTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("tp_type >=", value, "tpType");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameLessThan(String value) {
-            addCriterion("tp_name <", value, "tpName");
+        public Criteria andTpTypeLessThan(Integer value) {
+            addCriterion("tp_type <", value, "tpType");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameLessThanOrEqualTo(String value) {
-            addCriterion("tp_name <=", value, "tpName");
+        public Criteria andTpTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("tp_type <=", value, "tpType");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameLike(String value) {
-            addCriterion("tp_name like", value, "tpName");
+        public Criteria andTpTypeIn(List<Integer> values) {
+            addCriterion("tp_type in", values, "tpType");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameNotLike(String value) {
-            addCriterion("tp_name not like", value, "tpName");
+        public Criteria andTpTypeNotIn(List<Integer> values) {
+            addCriterion("tp_type not in", values, "tpType");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameIn(List<String> values) {
-            addCriterion("tp_name in", values, "tpName");
+        public Criteria andTpTypeBetween(Integer value1, Integer value2) {
+            addCriterion("tp_type between", value1, value2, "tpType");
             return (Criteria) this;
         }
 
-        public Criteria andTpNameNotIn(List<String> values) {
-            addCriterion("tp_name not in", values, "tpName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTpNameBetween(String value1, String value2) {
-            addCriterion("tp_name between", value1, value2, "tpName");
-            return (Criteria) this;
-        }
-
-        public Criteria andTpNameNotBetween(String value1, String value2) {
-            addCriterion("tp_name not between", value1, value2, "tpName");
+        public Criteria andTpTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("tp_type not between", value1, value2, "tpType");
             return (Criteria) this;
         }
 

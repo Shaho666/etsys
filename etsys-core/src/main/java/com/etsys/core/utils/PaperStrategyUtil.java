@@ -21,18 +21,17 @@ public class PaperStrategyUtil {
 		Integer[] result = new Integer[num];
 
 		for (int i = 0; i < result.length; i++) {
-			result[i] = random.nextInt(range);
+			result[i] = random.nextInt(range) + 1;
 
 			for (int j = 0; j < i; j++) {
 				if (result[i] == result[j]) {
-					result[i] = random.nextInt(range);
+					result[i] = random.nextInt(range) + 1;
 					j = 0;
 				}
 			}
 		}
 
 		strategy = Arrays.asList(result);
-
 		return strategy;
 	}
 

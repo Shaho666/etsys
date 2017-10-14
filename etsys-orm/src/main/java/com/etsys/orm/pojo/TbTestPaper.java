@@ -3,7 +3,7 @@ package com.etsys.orm.pojo;
 public class TbTestPaper {
     private String tpId;
 
-    private String tpName;
+    private Integer tpType;
 
     private Integer tpState;
 
@@ -23,12 +23,12 @@ public class TbTestPaper {
         this.tpId = tpId == null ? null : tpId.trim();
     }
 
-    public String getTpName() {
-        return tpName;
+    public Integer getTpType() {
+        return tpType;
     }
 
-    public void setTpName(String tpName) {
-        this.tpName = tpName == null ? null : tpName.trim();
+    public void setTpType(Integer tpType) {
+        this.tpType = tpType;
     }
 
     public Integer getTpState() {

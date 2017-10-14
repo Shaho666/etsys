@@ -3,7 +3,7 @@
 <mapper namespace="com.etsys.orm.mapper.TbTestPaperMapper" >
   <resultMap id="BaseResultMap" type="com.etsys.orm.pojo.TbTestPaper" >
     <id column="tp_id" property="tpId" jdbcType="VARCHAR" />
-    <result column="tp_name" property="tpName" jdbcType="VARCHAR" />
+    <result column="tp_type" property="tpType" jdbcType="INTEGER" />
     <result column="tp_state" property="tpState" jdbcType="INTEGER" />
     <result column="stu_id" property="stuId" jdbcType="VARCHAR" />
     <result column="course_id" property="courseId" jdbcType="VARCHAR" />
@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    tp_id, tp_name, tp_state, stu_id, course_id, test_id
+    tp_id, tp_type, tp_state, stu_id, course_id, test_id
   </sql>
   <sql id="Blob_Column_List" >
     tp_content
@@ -125,10 +125,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.etsys.orm.pojo.TbTestPaper" >
-    insert into tb_test_paper (tp_id, tp_name, tp_state, 
+    insert into tb_test_paper (tp_id, tp_type, tp_state, 
       stu_id, course_id, test_id, 
       tp_content)
-    values (#{tpId,jdbcType=VARCHAR}, #{tpName,jdbcType=VARCHAR}, #{tpState,jdbcType=INTEGER}, 
+    values (#{tpId,jdbcType=VARCHAR}, #{tpType,jdbcType=INTEGER}, #{tpState,jdbcType=INTEGER}, 
       #{stuId,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, #{testId,jdbcType=VARCHAR}, 
       #{tpContent,jdbcType=LONGVARCHAR})
   </insert>
@@ -138,8 +138,8 @@
       <if test="tpId != null" >
         tp_id,
       </if>
-      <if test="tpName != null" >
-        tp_name,
+      <if test="tpType != null" >
+        tp_type,
       </if>
       <if test="tpState != null" >
         tp_state,
@@ -161,8 +161,8 @@
       <if test="tpId != null" >
         #{tpId,jdbcType=VARCHAR},
       </if>
-      <if test="tpName != null" >
-        #{tpName,jdbcType=VARCHAR},
+      <if test="tpType != null" >
+        #{tpType,jdbcType=INTEGER},
       </if>
       <if test="tpState != null" >
         #{tpState,jdbcType=INTEGER},
@@ -193,8 +193,8 @@
       <if test="record.tpId != null" >
         tp_id = #{record.tpId,jdbcType=VARCHAR},
       </if>
-      <if test="record.tpName != null" >
-        tp_name = #{record.tpName,jdbcType=VARCHAR},
+      <if test="record.tpType != null" >
+        tp_type = #{record.tpType,jdbcType=INTEGER},
       </if>
       <if test="record.tpState != null" >
         tp_state = #{record.tpState,jdbcType=INTEGER},
@@ -219,7 +219,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update tb_test_paper
     set tp_id = #{record.tpId,jdbcType=VARCHAR},
-      tp_name = #{record.tpName,jdbcType=VARCHAR},
+      tp_type = #{record.tpType,jdbcType=INTEGER},
       tp_state = #{record.tpState,jdbcType=INTEGER},
       stu_id = #{record.stuId,jdbcType=VARCHAR},
       course_id = #{record.courseId,jdbcType=VARCHAR},
@@ -232,7 +232,7 @@
   <update id="updateByExample" parameterType="map" >
     update tb_test_paper
     set tp_id = #{record.tpId,jdbcType=VARCHAR},
-      tp_name = #{record.tpName,jdbcType=VARCHAR},
+      tp_type = #{record.tpType,jdbcType=INTEGER},
       tp_state = #{record.tpState,jdbcType=INTEGER},
       stu_id = #{record.stuId,jdbcType=VARCHAR},
       course_id = #{record.courseId,jdbcType=VARCHAR},
@@ -244,8 +244,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.etsys.orm.pojo.TbTestPaper" >
     update tb_test_paper
     <set >
-      <if test="tpName != null" >
-        tp_name = #{tpName,jdbcType=VARCHAR},
+      <if test="tpType != null" >
+        tp_type = #{tpType,jdbcType=INTEGER},
       </if>
       <if test="tpState != null" >
         tp_state = #{tpState,jdbcType=INTEGER},
@@ -267,7 +267,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.etsys.orm.pojo.TbTestPaper" >
     update tb_test_paper
-    set tp_name = #{tpName,jdbcType=VARCHAR},
+    set tp_type = #{tpType,jdbcType=INTEGER},
       tp_state = #{tpState,jdbcType=INTEGER},
       stu_id = #{stuId,jdbcType=VARCHAR},
       course_id = #{courseId,jdbcType=VARCHAR},
@@ -277,7 +277,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.etsys.orm.pojo.TbTestPaper" >
     update tb_test_paper
-    set tp_name = #{tpName,jdbcType=VARCHAR},
+    set tp_type = #{tpType,jdbcType=INTEGER},
       tp_state = #{tpState,jdbcType=INTEGER},
       stu_id = #{stuId,jdbcType=VARCHAR},
       course_id = #{courseId,jdbcType=VARCHAR},

@@ -11,9 +11,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.ExceptionUtil;
+import com.etsys.commons.utils.IdUtils;
 import com.etsys.core.service.QuestionBankService;
 import com.etsys.core.service.ScoreService;
 import com.etsys.core.service.TemplateService;
@@ -77,27 +79,46 @@ public class TestPaperController {
 		TbTest test = testService.getTestById(testId);
 		List<TbTemplateEntry> templateEntries = templateService.getEntries(test.getTemplateId());
 
+		modelMap.put("courseId", test.getCourseId());
+		modelMap.put("testId", testId);
+
 		List<TbQuestionBankWithBLOBs> questions = null;
 
 		for (TbTemplateEntry tbTemplateEntry : templateEntries) {
 
 			questions = new ArrayList<TbQuestionBankWithBLOBs>();
-			
+
 			int count = questionBankService.countByTypeDegreeAndCourse(tbTemplateEntry.getTemType(),
 					test.getTestDegree(), test.getCourseId());
 
 			List<Integer> list = PaperStrategyUtil.generateRandomStrategy(tbTemplateEntry.getTemNum(), count);
-			
-			for (Integer integer : list) {
-				TbQuestionBankWithBLOBs question = questionBankService.getByCourseDegreeAndType(test.getCourseId(),
-						test.getTestDegree(), integer, tbTemplateEntry.getTemType());
-				questions.add(question);
+			if (list != null && list.size() > 0) {
+				for (Integer integer : list) {
+					TbQuestionBankWithBLOBs question = questionBankService.getByCourseDegreeAndType(test.getCourseId(),
+							test.getTestDegree(), integer, tbTemplateEntry.getTemType());
+					questions.add(question);
+				}
+				modelMap.put("quesList" + tbTemplateEntry.getTemType(), questions);
 			}
-			modelMap.put("quesList" + tbTemplateEntry.getTemType(), questions);
-			
+
 		}
 
 		return "stu-test-pojo";
+	}
+
+	@RequestMapping("/submitPaper")
+	@ResponseBody
+	public JsonResult submitPaper(@RequestBody TbTestPaper testPaper) {
+
+		try {
+			testPaper.setTpId("tp" + IdUtils.genItemId());
+			testPaperService.insertTestPaper(testPaper);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.build(500, ExceptionUtil.getStackTrace(e));
+		}
+
+		return JsonResult.ok();
 	}
 
 }

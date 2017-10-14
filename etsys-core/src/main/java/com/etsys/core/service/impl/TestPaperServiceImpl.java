@@ -46,9 +46,9 @@ public class TestPaperServiceImpl implements TestPaperService {
 	@Override
 	public Integer insertTestPaper(TbTestPaper testPaper) {
 
-		/* 在此处填入合适的代码 */
+		int result = testPaperMapper.insert(testPaper);
 
-		return 0;
+		return result;
 	}
 
 	@Override
