@@ -5,7 +5,7 @@ import java.util.List;
 import com.etsys.orm.pojo.TbTemplate;
 import com.etsys.orm.pojo.TbTemplateEntry;
 
-public class TestPaperTemplate {
+public class PaperTemplate {
 
 	private TbTemplate template;
 	

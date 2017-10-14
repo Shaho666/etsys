@@ -1,6 +1,6 @@
 package com.etsys.core.service;
 
-import com.etsys.core.pojo.Instructor;
+import com.etsys.core.entity.Instructor;
 
 public interface SignUpService {
 

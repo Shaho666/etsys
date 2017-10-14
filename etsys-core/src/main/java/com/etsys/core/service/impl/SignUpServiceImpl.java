@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.HttpClientUtil;
 import com.etsys.commons.utils.JsonUtils;
-import com.etsys.core.pojo.Instructor;
+import com.etsys.core.entity.Instructor;
 import com.etsys.core.service.SignUpService;
 
 @Service

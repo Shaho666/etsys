@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.ExceptionUtil;
-import com.etsys.core.pojo.Instructor;
+import com.etsys.core.entity.Instructor;
 import com.etsys.core.service.SignUpService;
 import com.etsys.core.service.TeacherService;
 import com.etsys.orm.pojo.TbTeacher;

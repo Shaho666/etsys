@@ -1,6 +1,9 @@
 package com.etsys.core.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.ExceptionUtil;
+import com.etsys.core.service.QuestionBankService;
 import com.etsys.core.service.ScoreService;
+import com.etsys.core.service.TemplateService;
 import com.etsys.core.service.TestPaperService;
-import com.etsys.core.utils.TestPaperUtils;
+import com.etsys.core.service.TestService;
+import com.etsys.core.utils.PaperStrategyUtil;
+import com.etsys.orm.pojo.TbQuestionBankWithBLOBs;
+import com.etsys.orm.pojo.TbTemplate;
+import com.etsys.orm.pojo.TbTemplateEntry;
+import com.etsys.orm.pojo.TbTest;
 import com.etsys.orm.pojo.TbTestPaper;
 
 @Controller
@@ -25,6 +35,15 @@ public class TestPaperController {
 
 	@Autowired
 	private ScoreService scoreService;
+
+	@Autowired
+	private QuestionBankService questionBankService;
+
+	@Autowired
+	private TemplateService templateService;
+
+	@Autowired
+	private TestService testService;
 
 	@RequestMapping("/getChecked")
 	public String getPaperCheckedBy(@RequestParam("courseId") String courseId,
@@ -53,14 +72,32 @@ public class TestPaperController {
 	}
 
 	@RequestMapping("/generate")
-	public String generateTestPaper(@RequestParam("studentId") String studentId,
-			@RequestParam("courseId") String courseId) {
+	public String generateTestPaper(@RequestParam("testId") String testId, ModelMap modelMap) {
 
-		TbTestPaper testPaper = TestPaperUtils.generateTestPaper(null);
+		TbTest test = testService.getTestById(testId);
+		List<TbTemplateEntry> templateEntries = templateService.getEntries(test.getTemplateId());
 
-		/* 在此处填入合适的代码 */
+		List<TbQuestionBankWithBLOBs> questions = null;
 
-		return "stu-test";
+		for (TbTemplateEntry tbTemplateEntry : templateEntries) {
+
+			questions = new ArrayList<TbQuestionBankWithBLOBs>();
+			
+			int count = questionBankService.countByTypeDegreeAndCourse(tbTemplateEntry.getTemType(),
+					test.getTestDegree(), test.getCourseId());
+
+			List<Integer> list = PaperStrategyUtil.generateRandomStrategy(tbTemplateEntry.getTemNum(), count);
+			
+			for (Integer integer : list) {
+				TbQuestionBankWithBLOBs question = questionBankService.getByCourseDegreeAndType(test.getCourseId(),
+						test.getTestDegree(), integer, tbTemplateEntry.getTemType());
+				questions.add(question);
+			}
+			modelMap.put("quesList" + tbTemplateEntry.getTemType(), questions);
+			
+		}
+
+		return "stu-test-pojo";
 	}
 
 }

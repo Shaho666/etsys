@@ -80,4 +80,12 @@ public class TestServiceImpl implements TestService {
 		return tests;
 	}
 
+	@Override
+	public TbTest getTestById(String testId) {
+		
+		TbTest test = testMapper.selectByPrimaryKey(testId);
+		
+		return test;
+	}
+
 }

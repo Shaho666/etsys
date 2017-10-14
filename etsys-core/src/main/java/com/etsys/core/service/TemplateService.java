@@ -22,5 +22,7 @@ public interface TemplateService {
 	public void deleteTemplateInfo(TbTemplate template);
 
 	public void deleteTemplateEntry(TbTemplateEntry templateEntry);
+	
+	public TbTemplate getTemplateById(String templateId);
 
 }

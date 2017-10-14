@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.HttpClientUtil;
 import com.etsys.commons.utils.JsonUtils;
-import com.etsys.core.pojo.Course;
+import com.etsys.core.entity.Course;
 import com.etsys.core.service.CourseService;
 import com.etsys.orm.pojo.TbCourse;
 

@@ -98,4 +98,12 @@ public class TemplateServiceImpl implements TemplateService {
 		return list;
 	}
 
+	@Override
+	public TbTemplate getTemplateById(String templateId) {
+		
+		TbTemplate template = templateMapper.selectByPrimaryKey(templateId);
+		
+		return template;
+	}
+
 }
