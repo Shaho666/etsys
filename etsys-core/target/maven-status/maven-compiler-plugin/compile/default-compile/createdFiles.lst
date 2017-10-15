@@ -21,6 +21,7 @@ com\etsys\core\pojo\PageHelperResult.class
 com\etsys\core\service\QuestionBankService.class
 com\etsys\core\service\TeacherService.class
 com\etsys\core\controller\SignInController.class
+com\etsys\core\pojo\StuAnswer.class
 com\etsys\core\service\impl\CourseServiceImpl.class
 com\etsys\core\service\impl\TbPaperStateServiceImpl.class
 com\etsys\core\service\SignUpService.class

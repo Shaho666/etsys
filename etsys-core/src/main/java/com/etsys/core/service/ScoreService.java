@@ -12,4 +12,8 @@ public interface ScoreService {
 	
 	public Integer insertScore(TbScore score);
 	
+	public List<TbScore> getByTestAndState(String testId, Integer state);
+	
+	public List<TbScore> getByTestAndStudent(String testId, String studentId);
+	
 }

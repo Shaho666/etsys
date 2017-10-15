@@ -16,4 +16,10 @@ public interface TestPaperService {
 	
 	public List<TbTestPaper> getByStudentCourseAndTest(String studentId, String courseId, String testId);
 	
+	public List<TbTestPaper> getByCourseTestAndType(String courseId, String testId, Integer type);
+	
+	public List<TbTestPaper> getByStudentCourseTestAndState(String studentId, String courseId, String testId, Integer state);
+	
+	public TbTestPaper getTestPaperEntryUnique(Integer type, String studentId, String courseId, String testId);
+	
 }

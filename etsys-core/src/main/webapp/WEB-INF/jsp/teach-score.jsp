@@ -39,7 +39,7 @@
 						<c:forEach items="${courseList }" var="course">
 							<tr>
 								<td><a
-									href="/student/getByCourseAndTeacher?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }&returnPage=teach-score-check">${course.courseId }</a></td>
+									href="/test/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }&returnPage=teach-test-score-detail">${course.courseId }</a></td>
 								<td>${course.courseName }</td>
 								<td>${course.courseTime }</td>
 							</tr>

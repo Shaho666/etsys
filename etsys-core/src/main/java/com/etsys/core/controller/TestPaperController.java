@@ -15,6 +15,7 @@ import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.ExceptionUtil;
 import com.etsys.commons.utils.IdUtils;
 import com.etsys.commons.utils.JsonUtils;
+import com.etsys.core.pojo.StuAnswer;
 import com.etsys.core.pojo.TpContentEntry;
 import com.etsys.core.service.QuestionBankService;
 import com.etsys.core.service.ScoreService;
@@ -47,6 +48,12 @@ public class TestPaperController {
 	@Autowired
 	private TestService testService;
 
+	@RequestMapping("/showJudgePage")
+	public String showJudgePage() {
+
+		return "teach-test-paper-judge";
+	}
+
 	@RequestMapping("/getChecked")
 	public String getPaperCheckedBy(@RequestParam("courseId") String courseId,
 			@RequestParam("studentId") String studentId, @RequestParam("returnPage") String returnPage,
@@ -58,19 +65,40 @@ public class TestPaperController {
 		return returnPage;
 	}
 
-	@RequestMapping("/check")
-	public JsonResult checkPaper(@RequestBody TbTestPaper testPaper) {
+	@RequestMapping("/checkPaper")
+	public String checkPaper(@RequestParam String studentId, @RequestParam String courseId, @RequestParam String testId,
+			@RequestParam Integer state, ModelMap modelMap) {
 
-		try {
+		List<StuAnswer> questions = null;
 
-			/* 在此处填入合适的代码 */
+		List<TbTestPaper> testPapers = testPaperService.getByStudentCourseTestAndState(studentId, courseId, testId,
+				state);
+		for (TbTestPaper tbTestPaper : testPapers) {
+			String content = tbTestPaper.getTpContent();
 
-			return JsonResult.ok();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResult.build(500, ExceptionUtil.getStackTrace(e));
+			List<TpContentEntry> list = JsonUtils.jsonToList(content, TpContentEntry.class);
+			questions = new ArrayList<>();
+			for (TpContentEntry tpContentEntry : list) {
+				String questionId = tpContentEntry.getQuestionId();
+				TbQuestionBankWithBLOBs question = questionBankService.getQuestionBankById(questionId);
+				StuAnswer stuAnswer = new StuAnswer(question);
+				stuAnswer.setStuAnswer(tpContentEntry.getContent());
+				questions.add(stuAnswer);
+			}
+			modelMap.put("quesList" + tbTestPaper.getTpType(), questions);
 		}
+
+		TbTest test = testService.getTestById(testId);
+		List<TbTemplateEntry> entries = templateService.getEntries(test.getTemplateId());
+		for (TbTemplateEntry tbTemplateEntry : entries) {
+			modelMap.put("tp" + tbTemplateEntry.getTemType(), tbTemplateEntry.getTemScore());
+		}
+
+		modelMap.put("studentId", studentId);
+		modelMap.put("courseId", courseId);
+		modelMap.put("testId", testId);
+		
+		return "teach-test-paper-judge";
 	}
 
 	@RequestMapping("/showSuccessPage")
@@ -119,6 +147,7 @@ public class TestPaperController {
 		try {
 
 			testPaper.setTpId("tp" + IdUtils.genItemId());
+			testPaper.setTpState(4);
 			testPaperService.insertTestPaper(testPaper);
 
 			TbScore score = new TbScore();
@@ -162,11 +191,11 @@ public class TestPaperController {
 	public JsonResult submitPaperSubjective(@RequestBody TbTestPaper testPaper) {
 
 		try {
-			
+
 			testPaper.setTpId("tp" + IdUtils.genItemId());
 			testPaperService.insertTestPaper(testPaper);
 			return JsonResult.ok();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.build(500, ExceptionUtil.getStackTrace(e));

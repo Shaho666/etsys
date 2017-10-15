@@ -106,7 +106,8 @@ public class TestController {
 	}
 
 	@RequestMapping("/getByTeacherId")
-	public String getByTeacherId(@RequestParam String teacherId, @RequestParam String courseId, ModelMap modelMap) {
+	public String getByTeacherId(@RequestParam String teacherId, @RequestParam String courseId,
+			@RequestParam String returnPage, ModelMap modelMap) {
 
 		TbCourse course = courseService.getCourseById(courseId);
 
@@ -115,7 +116,7 @@ public class TestController {
 		modelMap.put("course", course);
 		modelMap.put("tests", tests);
 
-		return "teach-test-detail";
+		return returnPage;
 	}
 
 }

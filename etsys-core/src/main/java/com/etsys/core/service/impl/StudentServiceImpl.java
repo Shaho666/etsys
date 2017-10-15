@@ -62,4 +62,12 @@ public class StudentServiceImpl implements StudentService {
 		return result;
 	}
 
+	@Override
+	public TbStudent getStudentById(String studentId) {
+		
+		TbStudent student = studentMapper.selectByPrimaryKey(studentId);
+		
+		return student;
+	}
+
 }

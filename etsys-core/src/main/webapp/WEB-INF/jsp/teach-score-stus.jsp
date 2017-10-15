@@ -13,45 +13,44 @@
 <script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="/js/commons.js"></script>
 </head>
 <body class="skin-black">
 
 	<jsp:include page="up-side.jsp"></jsp:include>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 
-		<jsp:include page="left-side-test-paper.jsp"></jsp:include>
+		<jsp:include page="left-side.jsp"></jsp:include>
 
 		<aside class="right-side"> <section class="content">
 		<div id="con-center" class="row"
 			style="margin-bottom: 5px; height: 650px; overflow: auto">
 			<div style="padding: 20px 200px 10px;">
-				<h4 class="text-danger" align="center">按课程查看</h4>
-			</div>
-			<div style="padding: 20px 200px 10px;">
 				<table class="table table-hover">
 					<thead>
-						<tr>
-							<th>课程编号</th>
-							<th>课程名称</th>
-							<th>课程时长</th>
+						<tr class="warning">
+							<th>题型</th>
+							<th>得分</th>
 						</tr>
 					</thead>
+					<c:set var="mark" value="0.0"></c:set>
 					<tbody>
-						<c:forEach items="${courseList }" var="course">
-							<tr>
-								<td><a
-									href="/test/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }&returnPage=teach-test-detail">${course.courseId }</a></td>
-								<td>${course.courseName }</td>
-								<td>${course.courseTime }</td>
+						<c:forEach items="${scores }" var="score">
+							<tr class="success">
+
+								<td>${score.scoType }</td>
+								<td>${score.scoMark }</td>
+
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 				<br>
 			</div>
+
 		</div>
-		</section> </aside>
+		</section>
+		
+		</aside>
 		<!-- /.right-side -->
 
 	</div>

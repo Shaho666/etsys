@@ -38,9 +38,9 @@ public class TestPaperServiceImpl implements TestPaperService {
 	@Override
 	public Integer updateTestPaper(TbTestPaper testPaper) {
 
-		/* 在此处填入合适的代码 */
+		int result = testPaperMapper.updateByPrimaryKey(testPaper);
 
-		return 0;
+		return result;
 	}
 
 	@Override
@@ -69,17 +69,74 @@ public class TestPaperServiceImpl implements TestPaperService {
 
 	@Override
 	public List<TbTestPaper> getByStudentCourseAndTest(String studentId, String courseId, String testId) {
+
+		TbTestPaperExample example = new TbTestPaperExample();
+
+		Criteria criteria = example.createCriteria();
+		criteria.andStuIdEqualTo(studentId);
+		criteria.andCourseIdEqualTo(courseId);
+		criteria.andTestIdEqualTo(testId);
+
+		List<TbTestPaper> list = testPaperMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+
+		return null;
+	}
+
+	@Override
+	public List<TbTestPaper> getByCourseTestAndType(String courseId, String testId, Integer type) {
+
+		TbTestPaperExample example = new TbTestPaperExample();
+
+		Criteria criteria = example.createCriteria();
+		criteria.andCourseIdEqualTo(courseId);
+		criteria.andTestIdEqualTo(testId);
+		criteria.andTpTypeEqualTo(1001);
+
+		List<TbTestPaper> list = testPaperMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+
+		return null;
+	}
+
+	@Override
+	public List<TbTestPaper> getByStudentCourseTestAndState(String studentId, String courseId, String testId,
+			Integer state) {
+		
+		TbTestPaperExample example = new TbTestPaperExample();
+
+		Criteria criteria = example.createCriteria();
+		criteria.andStuIdEqualTo(studentId);
+		criteria.andCourseIdEqualTo(courseId);
+		criteria.andTestIdEqualTo(testId);
+		criteria.andTpStateEqualTo(state);
+
+		List<TbTestPaper> list = testPaperMapper.selectByExampleWithBLOBs(example);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+
+		return null;
+	}
+
+	@Override
+	public TbTestPaper getTestPaperEntryUnique(Integer type, String studentId, String courseId, String testId) {
 		
 		TbTestPaperExample example = new TbTestPaperExample();
 		
 		Criteria criteria = example.createCriteria();
+		criteria.andTpTypeEqualTo(type);
 		criteria.andStuIdEqualTo(studentId);
 		criteria.andCourseIdEqualTo(courseId);
 		criteria.andTestIdEqualTo(testId);
 		
 		List<TbTestPaper> list = testPaperMapper.selectByExample(example);
 		if (list != null && list.size() > 0) {
-			return list;
+			return list.get(0);
 		}
 		
 		return null;

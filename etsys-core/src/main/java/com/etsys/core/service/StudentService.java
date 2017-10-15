@@ -9,4 +9,6 @@ public interface StudentService {
 	
 	public PageHelperResult<TbStudent> getByCourseAndTeacher(String teacherId, String courseId, int pageNum, int pageSize);
 	
+	public TbStudent getStudentById(String studentId);
+	
 }

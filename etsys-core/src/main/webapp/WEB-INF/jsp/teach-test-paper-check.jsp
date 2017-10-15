@@ -30,18 +30,18 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>学生编号</th>
-							<th>学生姓名</th>
-							<th>所在班级</th>
+							<th>课程编号</th>
+							<th>课程名称</th>
+							<th>课程时长</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${students }" var="student">
+						<c:forEach items="${courseList }" var="course">
 							<tr>
 								<td><a
-									href="/testPaper/getChecked?courseId=${courseId }&studentId=${student.stuId }">${student.stuId }</a></td>
-								<td>${student.stuName }</td>
-								<td>${student.stuClass }</td>
+									href="/test/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&courseId=${course.courseId }&returnPage=teach-test-detail-judge">${course.courseId }</a></td>
+								<td>${course.courseName }</td>
+								<td>${course.courseTime }</td>
 							</tr>
 						</c:forEach>
 					</tbody>

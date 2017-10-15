@@ -22,11 +22,17 @@ import com.etsys.commons.utils.JsonUtils;
 import com.etsys.core.entity.Student;
 import com.etsys.core.pojo.PageHelperResult;
 import com.etsys.core.service.CourseService;
+import com.etsys.core.service.ScoreService;
 import com.etsys.core.service.StudentService;
 import com.etsys.core.service.TeacherCourseService;
+import com.etsys.core.service.TestPaperService;
+import com.etsys.core.service.TestService;
 import com.etsys.orm.pojo.TbCourse;
+import com.etsys.orm.pojo.TbScore;
 import com.etsys.orm.pojo.TbStudent;
 import com.etsys.orm.pojo.TbTeacherCourse;
+import com.etsys.orm.pojo.TbTest;
+import com.etsys.orm.pojo.TbTestPaper;
 
 @Controller
 @RequestMapping("/student")
@@ -40,6 +46,15 @@ public class StudentController {
 
 	@Autowired
 	private CourseService courseService;
+
+	@Autowired
+	private TestPaperService testPaperService;
+	
+	@Autowired
+	private TestService testService;
+	
+	@Autowired
+	private ScoreService scoreService;
 
 	@Value("${EDUCATION_ADMIN_BASE_URL}")
 	private String EDUCATION_ADMIN_BASE_URL;
@@ -67,11 +82,13 @@ public class StudentController {
 	@RequestMapping(value = "/getByCourseAndTeacher", method = RequestMethod.GET)
 	public String getStuByCourseAndTeacher(@RequestParam("teacherId") String teacherId,
 			@RequestParam("courseId") String courseId, @RequestParam("returnPage") String returnPage,
-			@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize, ModelMap modelMap) {
+			@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize,
+			ModelMap modelMap) {
 
 		TbCourse course = courseService.getCourseById(courseId);
 
-		PageHelperResult<TbStudent> result = studentService.getByCourseAndTeacher(teacherId, courseId, pageNum, pageSize);
+		PageHelperResult<TbStudent> result = studentService.getByCourseAndTeacher(teacherId, courseId, pageNum,
+				pageSize);
 
 		modelMap.put("students", result.getResultList());
 		modelMap.put("total", result.getTotal());
@@ -133,4 +150,46 @@ public class StudentController {
 		return "redirect:/student/getByCourseAndTeacher?teacherId=" + teacherId + "&courseId=" + courseId;
 	}
 
+	@RequestMapping("/getByCourseTestAndType")
+	public String getByCourseTestAndType(@RequestParam String courseId, @RequestParam String testId,
+			@RequestParam Integer type, ModelMap modelMap) {
+
+		List<TbStudent> students = new ArrayList<>();
+		
+		List<TbTestPaper> testPapers = testPaperService.getByCourseTestAndType(courseId, testId, type);
+		for (TbTestPaper tbTestPaper : testPapers) {
+			TbStudent student = studentService.getStudentById(tbTestPaper.getStuId());
+			students.add(student);
+		}
+		
+		TbCourse course = courseService.getCourseById(courseId);
+		TbTest test = testService.getTestById(testId);
+		
+		modelMap.put("students", students);
+		modelMap.put("course", course);
+		modelMap.put("test", test);
+		
+		return "teach-test-paper-judge-stus";
+	}
+
+	@RequestMapping("/getByTestFromScore")
+	public String getByTestFromScore(@RequestParam String testId, ModelMap modelMap) {
+		
+		List<TbStudent> students = new ArrayList<>();
+		
+		List<TbScore> scores = scoreService.getByTestAndState(testId, 1000);
+		for (TbScore tbScore : scores) {
+			TbStudent student = studentService.getStudentById(tbScore.getStuId());
+			students.add(student);
+		}
+		
+		TbTest test = testService.getTestById(testId);
+		TbCourse course = courseService.getCourseById(test.getCourseId());
+		
+		modelMap.put("students", students);
+		modelMap.put("course", course);
+		modelMap.put("test", test);
+		return "teach-test-score-detail-stus";
+	}
+	
 }

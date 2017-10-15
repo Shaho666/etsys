@@ -68,10 +68,44 @@ public class ScoreServiceImpl implements ScoreService {
 
 	@Override
 	public Integer insertScore(TbScore score) {
-		
+
 		int result = scoreMapper.insert(score);
-		
+
 		return result;
+	}
+
+	@Override
+	public List<TbScore> getByTestAndState(String testId, Integer state) {
+
+		TbScoreExample example = new TbScoreExample();
+
+		com.etsys.orm.pojo.TbScoreExample.Criteria criteria = example.createCriteria();
+		criteria.andTestIdEqualTo(testId);
+		criteria.andScoTypeEqualTo(1000);
+
+		List<TbScore> list = scoreMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+
+		return null;
+	}
+
+	@Override
+	public List<TbScore> getByTestAndStudent(String testId, String studentId) {
+		
+		TbScoreExample example = new TbScoreExample();
+
+		com.etsys.orm.pojo.TbScoreExample.Criteria criteria = example.createCriteria();
+		criteria.andTestIdEqualTo(testId);
+		criteria.andStuIdEqualTo(studentId);
+		
+		List<TbScore> list = scoreMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+		
+		return null;
 	}
 
 }

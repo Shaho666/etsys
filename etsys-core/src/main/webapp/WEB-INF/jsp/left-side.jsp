@@ -67,7 +67,7 @@
 	</a><a onclick=""
 		href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-test-check">
 			&nbsp;&nbsp;<i class="fa fa-globe"></i> <span>查看考试</span>
-	</a><a onclick="" href="#"> &nbsp;&nbsp;<i class="fa fa-globe"></i> <span>批改试卷</span>
+	</a><a onclick="" href="/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-test-paper-check"> &nbsp;&nbsp;<i class="fa fa-globe"></i> <span>批改试卷</span>
 	</a><a href="#"> &nbsp;&nbsp;<i class="fa fa-globe"></i> <span>试卷回顾</span>
 	</a></li>
 
