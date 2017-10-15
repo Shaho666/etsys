@@ -16,34 +16,79 @@
 <script src="/js/jquery-ui-1.10.3.min.js"></script>
 <script type="text/javascript" src="/js/commons.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#finish").click(function() {
-			$.ajaxSetup({
-			    contentType : 'application/json;charset=utf-8'
-		    });
-			var content = "[";
-			$("#select form").each(function() {
-				var jsonUnit = SerializeToJson.formToJson($(this).serialize());
-				content += jsonUnit + ",";
+	$(document).ready(
+			function() {
+				$("#finish").click(
+						function() {
+							$.ajaxSetup({
+								contentType : 'application/json;charset=utf-8'
+							});
+							
+							var flag = true;
+							
+							var stuId = "${sessionScope.student.stuId}";
+							var courseId = "${courseId}";
+							var testId = "${testId}";
+
+							/* 客观题*/
+							var jsonSelect = SerializeToJson.serializeByForm(
+									"#select form", 1000, stuId, courseId,
+									testId);
+							var jsonJudge = SerializeToJson.serializeByForm(
+									"#judge form", 1002, stuId, courseId,
+									testId);
+
+							/* 客观题提交*/
+							$.post('/testPaper/submitPaperObjective', jsonSelect,
+									function(data) {
+										if (data.status != 200) {
+											flag = false;
+										}
+									});
+							$.post('/testPaper/submitPaperObjective', jsonJudge,
+									function(data) {
+										if (data.status != 200) {
+											flag = false;
+										}
+									});
+
+							/*主观题*/
+							var jsonBlank = SerializeToJson.serializeByForm(
+									"#blank form", 1001, stuId, courseId,
+									testId);
+							var jsonDesc = SerializeToJson.serializeByForm(
+									"#desc form", 1003, stuId, courseId,
+									testId);
+							var jsonProc = SerializeToJson.serializeByForm(
+									"#proc form", 1004, stuId, courseId,
+									testId);
+							
+							/*主观题提交*/
+							$.post('/testPaper/submitPaperSubjective', jsonBlank,
+									function(data) {
+										if (data.status != 200) {
+											flag = false;
+										}
+									});
+							$.post('/testPaper/submitPaperSubjective', jsonDesc,
+									function(data) {
+										if (data.status != 200) {
+											flag = false;
+										}
+									});
+							$.post('/testPaper/submitPaperSubjective', jsonProc,
+									function(data) {
+										if (data.status != 200) {
+											flag = false;
+										}
+									});
+							if(flag == true) {
+								alert("提交成功！");
+								location.href = "/testPaper/showSuccessPage";
+							}
+
+						});
 			});
-			content = content.substr(0, content.length - 1);
-			content += "]";
-			var json = {};
-			json.tpId = 0;
-			json.tpType = 1000;
-			json.tpState = 2;
-			json.stuId = "${sessionScope.student.stuId}";
-			json.courseId = "${courseId}";
-			json.testId = "${testId}";
-			json.tpContent = content;
-			json = JSON.stringify(json);
-			$.post('/testPaper/submitPaper', json, function(data) {
-				if (data.status == 200) {
-					alert("success");
-				}
-			});
-		});
-	});
 </script>
 </head>
 <body class="skin-black">
@@ -77,36 +122,56 @@
 				</div>
 				<br>
 				<p>填空题</p>
-				<c:forEach items="${quesList1001 }" var="question">
+				<div id="blank">
+					<c:forEach items="${quesList1001 }" var="question">
 				    ${question.queContent }<br>
-					<input type="text" name="blank">
-					<br>
-				</c:forEach>
+						<form action="">
+							<input name="questionId" type="hidden" value="${question.queId }">
+							<input type="text" name="content">
+						</form>
+						<br>
+					</c:forEach>
+				</div>
 				<br>
 				<p>判断题</p>
-				<c:forEach items="${quesList1002 }" var="question">
-					<select name="judge">
-						<option></option>
-						<option value="1">对</option>
-						<option value="0">错</option>
-					</select>
-					<br>
+				<div id="judge">
+					<c:forEach items="${quesList1002 }" var="question">
+						<form action="">
+							<input name="questionId" type="hidden" value="${question.queId }">
+							<select name="content">
+								<option></option>
+								<option value="1">对</option>
+								<option value="0">错</option>
+							</select>
+						</form>
+						<br>
 				    ${question.queContent }<br>
-				</c:forEach>
+					</c:forEach>
+				</div>
 				<br>
 				<p>简答题</p>
-				<c:forEach items="${quesList1003 }" var="question">
+				<div id="desc">
+					<c:forEach items="${quesList1003 }" var="question">
 				    ${question.queContent }<br>
-					<textarea name="desc" rows="5" cols="80"></textarea>
-					<br>
-				</c:forEach>
+						<form action="">
+							<input name="questionId" type="hidden" value="${question.queId }">
+							<textarea name="content" rows="5" cols="80"></textarea>
+						</form>
+						<br>
+					</c:forEach>
+				</div>
 				<br>
 				<p>论述与分析题</p>
-				<c:forEach items="${quesList1004 }" var="question">
+				<div id="proc">
+					<c:forEach items="${quesList1004 }" var="question">
 				    ${question.queContent }<br>
-					<textarea name="proc" rows="5" cols="80"></textarea>
-					<br>
-				</c:forEach>
+						<form action="">
+							<input name="questionId" type="hidden" value="${question.queId }">
+							<textarea name="content" rows="5" cols="80"></textarea>
+						</form>
+						<br>
+					</c:forEach>
+				</div>
 			</div>
 			<div align="center" style="padding: 20px 200px 10px;">
 				<button id="finish">提交试卷</button>

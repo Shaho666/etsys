@@ -67,4 +67,22 @@ public class TestPaperServiceImpl implements TestPaperService {
 		return null;
 	}
 
+	@Override
+	public List<TbTestPaper> getByStudentCourseAndTest(String studentId, String courseId, String testId) {
+		
+		TbTestPaperExample example = new TbTestPaperExample();
+		
+		Criteria criteria = example.createCriteria();
+		criteria.andStuIdEqualTo(studentId);
+		criteria.andCourseIdEqualTo(courseId);
+		criteria.andTestIdEqualTo(testId);
+		
+		List<TbTestPaper> list = testPaperMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+		
+		return null;
+	}
+
 }

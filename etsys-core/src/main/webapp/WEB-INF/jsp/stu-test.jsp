@@ -38,8 +38,9 @@
 								<td><fmt:formatDate value="${test.created }" type="both" /></td>
 								<td>${test.courseId }</td>
 								<td>${test.teacherId }</td>
-								<td><a
-									href="/testPaper/generate?testId=${test.testId }">进入考试</a></td>
+								<td><c:if test="${test.finished == true }"><a
+									href="/testPaper/generate?testId=${test.testId }">进入考试</a></c:if>
+									<c:if test="${test.finished == false }"><p style="color: red">考试已完成</p></c:if></td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -353,6 +353,66 @@ public class TbTemplateEntryExample {
             addCriterion("tem_num not between", value1, value2, "temNum");
             return (Criteria) this;
         }
+
+        public Criteria andTemScoreIsNull() {
+            addCriterion("tem_score is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreIsNotNull() {
+            addCriterion("tem_score is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreEqualTo(Double value) {
+            addCriterion("tem_score =", value, "temScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreNotEqualTo(Double value) {
+            addCriterion("tem_score <>", value, "temScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreGreaterThan(Double value) {
+            addCriterion("tem_score >", value, "temScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreGreaterThanOrEqualTo(Double value) {
+            addCriterion("tem_score >=", value, "temScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreLessThan(Double value) {
+            addCriterion("tem_score <", value, "temScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreLessThanOrEqualTo(Double value) {
+            addCriterion("tem_score <=", value, "temScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreIn(List<Double> values) {
+            addCriterion("tem_score in", values, "temScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreNotIn(List<Double> values) {
+            addCriterion("tem_score not in", values, "temScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreBetween(Double value1, Double value2) {
+            addCriterion("tem_score between", value1, value2, "temScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemScoreNotBetween(Double value1, Double value2) {
+            addCriterion("tem_score not between", value1, value2, "temScore");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

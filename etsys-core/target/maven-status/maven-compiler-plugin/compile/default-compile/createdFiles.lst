@@ -34,6 +34,7 @@ com\etsys\core\controller\ScoreController.class
 com\etsys\core\service\ScoreService.class
 com\etsys\core\service\TestService.class
 com\etsys\core\entity\Instructor.class
+com\etsys\core\pojo\StuTest.class
 com\etsys\core\controller\QuestionBankController.class
 com\etsys\core\service\impl\TeacherCourseServiceImpl.class
 com\etsys\core\controller\TeacherCourseController.class
@@ -45,3 +46,4 @@ com\etsys\core\controller\SignUpController.class
 com\etsys\core\controller\TemplateController.class
 com\etsys\core\service\IndexService.class
 com\etsys\core\service\impl\TeacherServiceImpl.class
+com\etsys\core\utils\JsonRequestUtil.class

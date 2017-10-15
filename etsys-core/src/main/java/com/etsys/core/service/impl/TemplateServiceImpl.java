@@ -90,7 +90,7 @@ public class TemplateServiceImpl implements TemplateService {
 		Criteria criteria = example.createCriteria();
 		criteria.andTemIdEqualTo(templateId);
 
-		List<TbTemplateEntry> list = templateEntryMapper.selectByExampleWithBLOBs(example);
+		List<TbTemplateEntry> list = templateEntryMapper.selectByExample(example);
 		if (list != null && list.size() > 0) {
 			return list;
 		}
@@ -100,10 +100,27 @@ public class TemplateServiceImpl implements TemplateService {
 
 	@Override
 	public TbTemplate getTemplateById(String templateId) {
-		
+
 		TbTemplate template = templateMapper.selectByPrimaryKey(templateId);
-		
+
 		return template;
+	}
+
+	@Override
+	public TbTemplateEntry getEntryByIdAndType(String templateId, Integer type) {
+
+		TbTemplateEntryExample example = new TbTemplateEntryExample();
+
+		Criteria criteria = example.createCriteria();
+		criteria.andTemIdEqualTo(templateId);
+		criteria.andTemTypeEqualTo(type);
+
+		List<TbTemplateEntry> list = templateEntryMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list.get(0);
+		}
+
+		return null;
 	}
 
 }

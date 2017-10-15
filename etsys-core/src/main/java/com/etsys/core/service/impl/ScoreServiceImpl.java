@@ -50,12 +50,13 @@ public class ScoreServiceImpl implements ScoreService {
 	}
 
 	@Override
-	public TbScore getByTestPaper(String testPaperId) {
+	public TbScore getByTestPaper(String testId, String studentId) {
 
 		TbScoreExample example = new TbScoreExample();
 
 		com.etsys.orm.pojo.TbScoreExample.Criteria criteria = example.createCriteria();
-		criteria.andTpIdEqualTo(testPaperId);
+		criteria.andTestIdEqualTo(testId);
+		criteria.andStuIdEqualTo(studentId);
 
 		List<TbScore> list = scoreMapper.selectByExample(example);
 		if (list != null && list.size() > 0) {
@@ -63,6 +64,14 @@ public class ScoreServiceImpl implements ScoreService {
 		}
 
 		return null;
+	}
+
+	@Override
+	public Integer insertScore(TbScore score) {
+		
+		int result = scoreMapper.insert(score);
+		
+		return result;
 	}
 
 }

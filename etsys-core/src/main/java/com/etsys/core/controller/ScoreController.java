@@ -42,7 +42,7 @@ public class ScoreController {
 		
 		List<TbTestPaper> list = testPaperService.getByStudent(studentId);
 		for (TbTestPaper tbTestPaper : list) {
-			TbScore score = scoreService.getByTestPaper(tbTestPaper.getTpId());
+			TbScore score = scoreService.getByTestPaper(studentId, null);
 			scores.add(score);
 		}
 		

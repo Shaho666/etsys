@@ -6,9 +6,7 @@
     <result column="tem_id" property="temId" jdbcType="VARCHAR" />
     <result column="tem_type" property="temType" jdbcType="INTEGER" />
     <result column="tem_num" property="temNum" jdbcType="INTEGER" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.etsys.orm.pojo.TbTemplateEntry" extends="BaseResultMap" >
-    <result column="tem_score" property="temScore" jdbcType="LONGVARCHAR" />
+    <result column="tem_score" property="temScore" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,27 +67,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    tem_entry_id, tem_id, tem_type, tem_num
+    tem_entry_id, tem_id, tem_type, tem_num, tem_score
   </sql>
-  <sql id="Blob_Column_List" >
-    tem_score
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.etsys.orm.pojo.TbTemplateEntryExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from tb_template_entry
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.etsys.orm.pojo.TbTemplateEntryExample" >
     select
     <if test="distinct" >
@@ -104,11 +83,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from tb_template_entry
     where tem_entry_id = #{temEntryId,jdbcType=INTEGER}
   </select>
@@ -126,7 +103,7 @@
     insert into tb_template_entry (tem_entry_id, tem_id, tem_type, 
       tem_num, tem_score)
     values (#{temEntryId,jdbcType=INTEGER}, #{temId,jdbcType=VARCHAR}, #{temType,jdbcType=INTEGER}, 
-      #{temNum,jdbcType=INTEGER}, #{temScore,jdbcType=LONGVARCHAR})
+      #{temNum,jdbcType=INTEGER}, #{temScore,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.etsys.orm.pojo.TbTemplateEntry" >
     insert into tb_template_entry
@@ -161,7 +138,7 @@
         #{temNum,jdbcType=INTEGER},
       </if>
       <if test="temScore != null" >
-        #{temScore,jdbcType=LONGVARCHAR},
+        #{temScore,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -187,20 +164,9 @@
         tem_num = #{record.temNum,jdbcType=INTEGER},
       </if>
       <if test="record.temScore != null" >
-        tem_score = #{record.temScore,jdbcType=LONGVARCHAR},
+        tem_score = #{record.temScore,jdbcType=DOUBLE},
       </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update tb_template_entry
-    set tem_entry_id = #{record.temEntryId,jdbcType=INTEGER},
-      tem_id = #{record.temId,jdbcType=VARCHAR},
-      tem_type = #{record.temType,jdbcType=INTEGER},
-      tem_num = #{record.temNum,jdbcType=INTEGER},
-      tem_score = #{record.temScore,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -210,7 +176,8 @@
     set tem_entry_id = #{record.temEntryId,jdbcType=INTEGER},
       tem_id = #{record.temId,jdbcType=VARCHAR},
       tem_type = #{record.temType,jdbcType=INTEGER},
-      tem_num = #{record.temNum,jdbcType=INTEGER}
+      tem_num = #{record.temNum,jdbcType=INTEGER},
+      tem_score = #{record.temScore,jdbcType=DOUBLE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -228,24 +195,17 @@
         tem_num = #{temNum,jdbcType=INTEGER},
       </if>
       <if test="temScore != null" >
-        tem_score = #{temScore,jdbcType=LONGVARCHAR},
+        tem_score = #{temScore,jdbcType=DOUBLE},
       </if>
     </set>
-    where tem_entry_id = #{temEntryId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.etsys.orm.pojo.TbTemplateEntry" >
-    update tb_template_entry
-    set tem_id = #{temId,jdbcType=VARCHAR},
-      tem_type = #{temType,jdbcType=INTEGER},
-      tem_num = #{temNum,jdbcType=INTEGER},
-      tem_score = #{temScore,jdbcType=LONGVARCHAR}
     where tem_entry_id = #{temEntryId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.etsys.orm.pojo.TbTemplateEntry" >
     update tb_template_entry
     set tem_id = #{temId,jdbcType=VARCHAR},
       tem_type = #{temType,jdbcType=INTEGER},
-      tem_num = #{temNum,jdbcType=INTEGER}
+      tem_num = #{temNum,jdbcType=INTEGER},
+      tem_score = #{temScore,jdbcType=DOUBLE}
     where tem_entry_id = #{temEntryId,jdbcType=INTEGER}
   </update>
 </mapper>

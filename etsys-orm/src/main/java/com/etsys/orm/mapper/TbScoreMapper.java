@@ -16,21 +16,15 @@ public interface TbScoreMapper {
 
     int insertSelective(TbScore record);
 
-    List<TbScore> selectByExampleWithBLOBs(TbScoreExample example);
-
     List<TbScore> selectByExample(TbScoreExample example);
 
     TbScore selectByPrimaryKey(String scoId);
 
     int updateByExampleSelective(@Param("record") TbScore record, @Param("example") TbScoreExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") TbScore record, @Param("example") TbScoreExample example);
-
     int updateByExample(@Param("record") TbScore record, @Param("example") TbScoreExample example);
 
     int updateByPrimaryKeySelective(TbScore record);
-
-    int updateByPrimaryKeyWithBLOBs(TbScore record);
 
     int updateByPrimaryKey(TbScore record);
 }

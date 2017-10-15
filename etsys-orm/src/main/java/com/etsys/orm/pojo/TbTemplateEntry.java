@@ -9,7 +9,7 @@ public class TbTemplateEntry {
 
     private Integer temNum;
 
-    private String temScore;
+    private Double temScore;
 
     public Integer getTemEntryId() {
         return temEntryId;
@@ -43,11 +43,11 @@ public class TbTemplateEntry {
         this.temNum = temNum;
     }
 
-    public String getTemScore() {
+    public Double getTemScore() {
         return temScore;
     }
 
-    public void setTemScore(String temScore) {
-        this.temScore = temScore == null ? null : temScore.trim();
+    public void setTemScore(Double temScore) {
+        this.temScore = temScore;
     }
 }

@@ -3,8 +3,6 @@ package com.etsys.core.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.ExceptionUtil;
 import com.etsys.commons.utils.IdUtils;
+import com.etsys.commons.utils.JsonUtils;
+import com.etsys.core.pojo.TpContentEntry;
 import com.etsys.core.service.QuestionBankService;
 import com.etsys.core.service.ScoreService;
 import com.etsys.core.service.TemplateService;
@@ -23,7 +23,7 @@ import com.etsys.core.service.TestPaperService;
 import com.etsys.core.service.TestService;
 import com.etsys.core.utils.PaperStrategyUtil;
 import com.etsys.orm.pojo.TbQuestionBankWithBLOBs;
-import com.etsys.orm.pojo.TbTemplate;
+import com.etsys.orm.pojo.TbScore;
 import com.etsys.orm.pojo.TbTemplateEntry;
 import com.etsys.orm.pojo.TbTest;
 import com.etsys.orm.pojo.TbTestPaper;
@@ -73,6 +73,12 @@ public class TestPaperController {
 		}
 	}
 
+	@RequestMapping("/showSuccessPage")
+	public String showSuccessPage() {
+
+		return "redirect:/stu-test-success";
+	}
+
 	@RequestMapping("/generate")
 	public String generateTestPaper(@RequestParam("testId") String testId, ModelMap modelMap) {
 
@@ -106,19 +112,66 @@ public class TestPaperController {
 		return "stu-test-pojo";
 	}
 
-	@RequestMapping("/submitPaper")
+	@RequestMapping("/submitPaperObjective")
 	@ResponseBody
-	public JsonResult submitPaper(@RequestBody TbTestPaper testPaper) {
+	public JsonResult submitPaperSelect(@RequestBody TbTestPaper testPaper) {
 
 		try {
+
 			testPaper.setTpId("tp" + IdUtils.genItemId());
 			testPaperService.insertTestPaper(testPaper);
+
+			TbScore score = new TbScore();
+
+			score.setScoId("sco" + IdUtils.genItemId());
+			score.setStuId(testPaper.getStuId());
+			score.setTestId(testPaper.getTestId());
+
+			TbTest test = testService.getTestById(testPaper.getTestId());
+			TbTemplateEntry templateEntry = templateService.getEntryByIdAndType(test.getTemplateId(),
+					testPaper.getTpType());
+
+			double scoreUnit = 0.0;
+
+			String content = testPaper.getTpContent();
+			List<TpContentEntry> list = JsonUtils.jsonToList(content, TpContentEntry.class);
+
+			for (TpContentEntry tpContentEntry : list) {
+				TbQuestionBankWithBLOBs question = questionBankService
+						.getQuestionBankById(tpContentEntry.getQuestionId());
+				if (question.getQueAnswer().equals(tpContentEntry.getContent())) {
+					scoreUnit += templateEntry.getTemScore();
+				}
+			}
+
+			score.setScoMark(scoreUnit);
+			score.setScoType(testPaper.getTpType());
+
+			scoreService.insertScore(score);
+			return JsonResult.ok();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.build(500, ExceptionUtil.getStackTrace(e));
 		}
 
-		return JsonResult.ok();
+	}
+
+	@RequestMapping("/submitPaperSubjective")
+	@ResponseBody
+	public JsonResult submitPaperSubjective(@RequestBody TbTestPaper testPaper) {
+
+		try {
+			
+			testPaper.setTpId("tp" + IdUtils.genItemId());
+			testPaperService.insertTestPaper(testPaper);
+			return JsonResult.ok();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.build(500, ExceptionUtil.getStackTrace(e));
+		}
+
 	}
 
 }

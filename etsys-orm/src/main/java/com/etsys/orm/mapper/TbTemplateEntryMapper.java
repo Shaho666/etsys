@@ -16,21 +16,15 @@ public interface TbTemplateEntryMapper {
 
     int insertSelective(TbTemplateEntry record);
 
-    List<TbTemplateEntry> selectByExampleWithBLOBs(TbTemplateEntryExample example);
-
     List<TbTemplateEntry> selectByExample(TbTemplateEntryExample example);
 
     TbTemplateEntry selectByPrimaryKey(Integer temEntryId);
 
     int updateByExampleSelective(@Param("record") TbTemplateEntry record, @Param("example") TbTemplateEntryExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") TbTemplateEntry record, @Param("example") TbTemplateEntryExample example);
-
     int updateByExample(@Param("record") TbTemplateEntry record, @Param("example") TbTemplateEntryExample example);
 
     int updateByPrimaryKeySelective(TbTemplateEntry record);
-
-    int updateByPrimaryKeyWithBLOBs(TbTemplateEntry record);
 
     int updateByPrimaryKey(TbTemplateEntry record);
 }

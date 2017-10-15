@@ -3,11 +3,10 @@
 <mapper namespace="com.etsys.orm.mapper.TbScoreMapper" >
   <resultMap id="BaseResultMap" type="com.etsys.orm.pojo.TbScore" >
     <id column="sco_id" property="scoId" jdbcType="VARCHAR" />
-    <result column="tp_id" property="tpId" jdbcType="VARCHAR" />
-    <result column="sco_mark" property="scoMark" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.etsys.orm.pojo.TbScore" extends="BaseResultMap" >
-    <result column="sco_detail" property="scoDetail" jdbcType="LONGVARCHAR" />
+    <result column="test_id" property="testId" jdbcType="VARCHAR" />
+    <result column="stu_id" property="stuId" jdbcType="VARCHAR" />
+    <result column="sco_mark" property="scoMark" jdbcType="DOUBLE" />
+    <result column="sco_type" property="scoType" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,27 +67,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    sco_id, tp_id, sco_mark
+    sco_id, test_id, stu_id, sco_mark, sco_type
   </sql>
-  <sql id="Blob_Column_List" >
-    sco_detail
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.etsys.orm.pojo.TbScoreExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from tb_score
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.etsys.orm.pojo.TbScoreExample" >
     select
     <if test="distinct" >
@@ -103,11 +83,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from tb_score
     where sco_id = #{scoId,jdbcType=VARCHAR}
   </select>
@@ -122,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.etsys.orm.pojo.TbScore" >
-    insert into tb_score (sco_id, tp_id, sco_mark, 
-      sco_detail)
-    values (#{scoId,jdbcType=VARCHAR}, #{tpId,jdbcType=VARCHAR}, #{scoMark,jdbcType=VARCHAR}, 
-      #{scoDetail,jdbcType=LONGVARCHAR})
+    insert into tb_score (sco_id, test_id, stu_id, 
+      sco_mark, sco_type)
+    values (#{scoId,jdbcType=VARCHAR}, #{testId,jdbcType=VARCHAR}, #{stuId,jdbcType=VARCHAR}, 
+      #{scoMark,jdbcType=DOUBLE}, #{scoType,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.etsys.orm.pojo.TbScore" >
     insert into tb_score
@@ -133,28 +111,34 @@
       <if test="scoId != null" >
         sco_id,
       </if>
-      <if test="tpId != null" >
-        tp_id,
+      <if test="testId != null" >
+        test_id,
+      </if>
+      <if test="stuId != null" >
+        stu_id,
       </if>
       <if test="scoMark != null" >
         sco_mark,
       </if>
-      <if test="scoDetail != null" >
-        sco_detail,
+      <if test="scoType != null" >
+        sco_type,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="scoId != null" >
         #{scoId,jdbcType=VARCHAR},
       </if>
-      <if test="tpId != null" >
-        #{tpId,jdbcType=VARCHAR},
+      <if test="testId != null" >
+        #{testId,jdbcType=VARCHAR},
+      </if>
+      <if test="stuId != null" >
+        #{stuId,jdbcType=VARCHAR},
       </if>
       <if test="scoMark != null" >
-        #{scoMark,jdbcType=VARCHAR},
+        #{scoMark,jdbcType=DOUBLE},
       </if>
-      <if test="scoDetail != null" >
-        #{scoDetail,jdbcType=LONGVARCHAR},
+      <if test="scoType != null" >
+        #{scoType,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -170,26 +154,19 @@
       <if test="record.scoId != null" >
         sco_id = #{record.scoId,jdbcType=VARCHAR},
       </if>
-      <if test="record.tpId != null" >
-        tp_id = #{record.tpId,jdbcType=VARCHAR},
+      <if test="record.testId != null" >
+        test_id = #{record.testId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stuId != null" >
+        stu_id = #{record.stuId,jdbcType=VARCHAR},
       </if>
       <if test="record.scoMark != null" >
-        sco_mark = #{record.scoMark,jdbcType=VARCHAR},
+        sco_mark = #{record.scoMark,jdbcType=DOUBLE},
       </if>
-      <if test="record.scoDetail != null" >
-        sco_detail = #{record.scoDetail,jdbcType=LONGVARCHAR},
+      <if test="record.scoType != null" >
+        sco_type = #{record.scoType,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update tb_score
-    set sco_id = #{record.scoId,jdbcType=VARCHAR},
-      tp_id = #{record.tpId,jdbcType=VARCHAR},
-      sco_mark = #{record.scoMark,jdbcType=VARCHAR},
-      sco_detail = #{record.scoDetail,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,8 +174,10 @@
   <update id="updateByExample" parameterType="map" >
     update tb_score
     set sco_id = #{record.scoId,jdbcType=VARCHAR},
-      tp_id = #{record.tpId,jdbcType=VARCHAR},
-      sco_mark = #{record.scoMark,jdbcType=VARCHAR}
+      test_id = #{record.testId,jdbcType=VARCHAR},
+      stu_id = #{record.stuId,jdbcType=VARCHAR},
+      sco_mark = #{record.scoMark,jdbcType=DOUBLE},
+      sco_type = #{record.scoType,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -206,29 +185,27 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.etsys.orm.pojo.TbScore" >
     update tb_score
     <set >
-      <if test="tpId != null" >
-        tp_id = #{tpId,jdbcType=VARCHAR},
+      <if test="testId != null" >
+        test_id = #{testId,jdbcType=VARCHAR},
+      </if>
+      <if test="stuId != null" >
+        stu_id = #{stuId,jdbcType=VARCHAR},
       </if>
       <if test="scoMark != null" >
-        sco_mark = #{scoMark,jdbcType=VARCHAR},
+        sco_mark = #{scoMark,jdbcType=DOUBLE},
       </if>
-      <if test="scoDetail != null" >
-        sco_detail = #{scoDetail,jdbcType=LONGVARCHAR},
+      <if test="scoType != null" >
+        sco_type = #{scoType,jdbcType=INTEGER},
       </if>
     </set>
     where sco_id = #{scoId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.etsys.orm.pojo.TbScore" >
-    update tb_score
-    set tp_id = #{tpId,jdbcType=VARCHAR},
-      sco_mark = #{scoMark,jdbcType=VARCHAR},
-      sco_detail = #{scoDetail,jdbcType=LONGVARCHAR}
-    where sco_id = #{scoId,jdbcType=VARCHAR}
-  </update>
   <update id="updateByPrimaryKey" parameterType="com.etsys.orm.pojo.TbScore" >
     update tb_score
-    set tp_id = #{tpId,jdbcType=VARCHAR},
-      sco_mark = #{scoMark,jdbcType=VARCHAR}
+    set test_id = #{testId,jdbcType=VARCHAR},
+      stu_id = #{stuId,jdbcType=VARCHAR},
+      sco_mark = #{scoMark,jdbcType=DOUBLE},
+      sco_type = #{scoType,jdbcType=INTEGER}
     where sco_id = #{scoId,jdbcType=VARCHAR}
   </update>
 </mapper>

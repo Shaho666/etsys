@@ -8,6 +8,8 @@ public interface ScoreService {
 
 	public List<TbScore> getScore(String studentId, String courseId);
 	
-	public TbScore getByTestPaper(String testPaperId);
+	public TbScore getByTestPaper(String testId, String studentId);
+	
+	public Integer insertScore(TbScore score);
 	
 }

@@ -3,11 +3,13 @@ package com.etsys.orm.pojo;
 public class TbScore {
     private String scoId;
 
-    private String tpId;
+    private String testId;
 
-    private String scoMark;
+    private String stuId;
 
-    private String scoDetail;
+    private Double scoMark;
+
+    private Integer scoType;
 
     public String getScoId() {
         return scoId;
@@ -17,27 +19,35 @@ public class TbScore {
         this.scoId = scoId == null ? null : scoId.trim();
     }
 
-    public String getTpId() {
-        return tpId;
+    public String getTestId() {
+        return testId;
     }
 
-    public void setTpId(String tpId) {
-        this.tpId = tpId == null ? null : tpId.trim();
+    public void setTestId(String testId) {
+        this.testId = testId == null ? null : testId.trim();
     }
 
-    public String getScoMark() {
+    public String getStuId() {
+        return stuId;
+    }
+
+    public void setStuId(String stuId) {
+        this.stuId = stuId == null ? null : stuId.trim();
+    }
+
+    public Double getScoMark() {
         return scoMark;
     }
 
-    public void setScoMark(String scoMark) {
-        this.scoMark = scoMark == null ? null : scoMark.trim();
+    public void setScoMark(Double scoMark) {
+        this.scoMark = scoMark;
     }
 
-    public String getScoDetail() {
-        return scoDetail;
+    public Integer getScoType() {
+        return scoType;
     }
 
-    public void setScoDetail(String scoDetail) {
-        this.scoDetail = scoDetail == null ? null : scoDetail.trim();
+    public void setScoType(Integer scoType) {
+        this.scoType = scoType;
     }
 }
