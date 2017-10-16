@@ -15,7 +15,7 @@ import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.ExceptionUtil;
 import com.etsys.commons.utils.IdUtils;
 import com.etsys.commons.utils.JsonUtils;
-import com.etsys.core.pojo.StuAnswer;
+import com.etsys.core.entity.StuAnswer;
 import com.etsys.core.pojo.TpContentEntry;
 import com.etsys.core.service.QuestionBankService;
 import com.etsys.core.service.ScoreService;
@@ -69,29 +69,35 @@ public class TestPaperController {
 	public String checkPaper(@RequestParam String studentId, @RequestParam String courseId, @RequestParam String testId,
 			@RequestParam Integer state, ModelMap modelMap) {
 
-		List<StuAnswer> questions = null;
+		try {
+			
+			List<StuAnswer> questions = null;
 
-		List<TbTestPaper> testPapers = testPaperService.getByStudentCourseTestAndState(studentId, courseId, testId,
-				state);
-		for (TbTestPaper tbTestPaper : testPapers) {
-			String content = tbTestPaper.getTpContent();
+			List<TbTestPaper> testPapers = testPaperService.getByStudentCourseTestAndState(studentId, courseId, testId,
+					state);
+			for (TbTestPaper tbTestPaper : testPapers) {
+				String content = tbTestPaper.getTpContent();
 
-			List<TpContentEntry> list = JsonUtils.jsonToList(content, TpContentEntry.class);
-			questions = new ArrayList<>();
-			for (TpContentEntry tpContentEntry : list) {
-				String questionId = tpContentEntry.getQuestionId();
-				TbQuestionBankWithBLOBs question = questionBankService.getQuestionBankById(questionId);
-				StuAnswer stuAnswer = new StuAnswer(question);
-				stuAnswer.setStuAnswer(tpContentEntry.getContent());
-				questions.add(stuAnswer);
+				List<TpContentEntry> list = JsonUtils.jsonToList(content, TpContentEntry.class);
+				questions = new ArrayList<>();
+				for (TpContentEntry tpContentEntry : list) {
+					String questionId = tpContentEntry.getQuestionId();
+					TbQuestionBankWithBLOBs question = questionBankService.getQuestionBankById(questionId);
+					StuAnswer stuAnswer = new StuAnswer(question);
+					stuAnswer.setStuAnswer(tpContentEntry.getContent());
+					questions.add(stuAnswer);
+				}
+				modelMap.put("quesList" + tbTestPaper.getTpType(), questions);
 			}
-			modelMap.put("quesList" + tbTestPaper.getTpType(), questions);
-		}
 
-		TbTest test = testService.getTestById(testId);
-		List<TbTemplateEntry> entries = templateService.getEntries(test.getTemplateId());
-		for (TbTemplateEntry tbTemplateEntry : entries) {
-			modelMap.put("tp" + tbTemplateEntry.getTemType(), tbTemplateEntry.getTemScore());
+			TbTest test = testService.getTestById(testId);
+			List<TbTemplateEntry> entries = templateService.getEntries(test.getTemplateId());
+			for (TbTemplateEntry tbTemplateEntry : entries) {
+				modelMap.put("tp" + tbTemplateEntry.getTemType(), tbTemplateEntry.getTemScore());
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		modelMap.put("studentId", studentId);

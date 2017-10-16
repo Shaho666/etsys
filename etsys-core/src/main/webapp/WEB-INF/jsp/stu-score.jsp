@@ -23,7 +23,24 @@
 		<aside class="right-side"> <section class="content">
 		<div id="con-center" class="row" style="margin-bottom: 5px;">
 			<div style="padding: 20px 200px 10px;">
-				
+				<table class="table table-hover">
+					<thead>
+						<tr class="info">
+							<td>考试编号</td>
+							<td>学生编号</td>
+							<td>课程名称</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${scores }" var="score">
+							<tr class="success">
+								<td><a href="/score/getByTestAndStudent?testId=${score.testId }&studentId=${sessionScope.student.stuId }&returnPage=stu-score-detail">${score.testId }</a></td>
+								<td>${score.stuId }</td>
+								<td>${score.courseName }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		</section> </aside>

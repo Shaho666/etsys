@@ -59,7 +59,7 @@
 				<div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms"
 					data-wow-delay="300ms">
 					<div class="service-icon">
-						<i class="fa fa-calendar"></i>
+						<div style="padding: 27px 0px 0px 0px;"><i class="fa fa-calendar"></i></div>
 					</div>
 					<div class="service-info">
 						<h3>教师学生管理</h3>
@@ -69,7 +69,7 @@
 				<div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms"
 					data-wow-delay="450ms">
 					<div class="service-icon">
-						<i class="fa fa-umbrella"></i>
+						<div style="padding: 27px 0px 0px 0px;"><i class="fa fa-umbrella"></i></div>
 					</div>
 					<div class="service-info">
 						<h3>在线考试模板</h3>
@@ -79,7 +79,8 @@
 				<div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms"
 					data-wow-delay="550ms">
 					<div class="service-icon">
-						<i class="fa fa-cloud"></i>
+					    <div style="padding: 27px 0px 0px 0px;"><i class="fa fa-cloud"></i></div>
+						
 					</div>
 					<div class="service-info">
 						<h3>试题难度设定</h3>
@@ -89,7 +90,7 @@
 				<div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms"
 					data-wow-delay="650ms">
 					<div class="service-icon">
-						<i class="fa fa-coffee"></i>
+						<div style="padding: 27px 0px 0px 0px;"><i class="fa fa-coffee"></i></div>
 					</div>
 					<div class="service-info">
 						<h3>快速查询成绩</h3>
@@ -99,7 +100,7 @@
 				<div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms"
 					data-wow-delay="750ms">
 					<div class="service-icon">
-						<i class="fa fa-bitbucket"></i>
+						<div style="padding: 27px 0px 0px 0px;"><i class="fa fa-bitbucket"></i></div>
 					</div>
 					<div class="service-info">
 						<h3>试卷在线批改</h3>
@@ -109,7 +110,7 @@
 				<div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms"
 					data-wow-delay="850ms">
 					<div class="service-icon">
-						<i class="fa fa-gift"></i>
+						<div style="padding: 27px 0px 0px 0px;"><i class="fa fa-gift"></i></div>
 					</div>
 					<div class="service-info">
 						<h3>高效生成试卷</h3>

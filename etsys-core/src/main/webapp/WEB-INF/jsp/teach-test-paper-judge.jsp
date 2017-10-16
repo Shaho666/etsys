@@ -77,60 +77,69 @@
 			<div style="padding: 20px 200px 10px;">
 				<p>填空题</p>
 				<div id="blank">
-					<c:forEach items="${quesList1001 }" var="question">
-						<label>得分：</label>
-						<form action="">
-							<select name="count">
-								<c:forEach var="i" begin="0" end="${tp1001 }" varStatus="status">
-									<option value="${status.index }">${status.index }</option>
-								</c:forEach>
-							</select>（本题满分：${tp1001 }）
-						</form>
-						<p>题目描述：${question.queContent }</p>
-						<p>参考答案：${question.queAnswer }</p>
-						<p>学生答案：${question.stuAnswer }</p>
-						<br>
-					</c:forEach>
+					<c:if test="${not empty quesList1001 }">
+					    <c:forEach items="${quesList1001 }" var="question">
+						    <label>得分：</label>
+						    <form action="">
+							    <select name="count">
+								    <c:forEach var="i" begin="0" end="${tp1001 }" varStatus="status">
+									    <option value="${status.index }">${status.index }</option>
+								    </c:forEach>
+							    </select>（本题满分：${tp1001 }）
+						    </form>
+						    <p>题目描述：${question.queContent }</p>
+						    <p>参考答案：${question.queAnswer }</p>
+						    <p>学生答案：${question.stuAnswer }</p>
+						    <br>
+					    </c:forEach>
+					</c:if>
+					<c:if test="${empty quesList1001 }">填空题批改完成</c:if>
 				</div>
 				<br>
 				<p>简答题</p>
 				<div id="desc">
-					<c:forEach items="${quesList1003 }" var="question">
-						<label>得分：</label>
-						<form action="">
-							<select name="count">
-								<c:forEach var="i" begin="0" end="${tp1003 }" varStatus="status">
-									<option value="${status.index }">${status.index }</option>
-								</c:forEach>
-							</select>（本题满分：${tp1003 }）
-						</form>
-						<p>题目描述：${question.queContent }</p>
-						<p>参考答案：${question.queAnswer }</p>
-						<p>学生答案：${question.stuAnswer }</p>
-						<br>
-					</c:forEach>
+					<c:if test="${not empty quesList1003 }">
+					    <c:forEach items="${quesList1003 }" var="question">
+						    <label>得分：</label>
+						        <form action="">
+							    <select name="count">
+								    <c:forEach var="i" begin="0" end="${tp1003 }" varStatus="status">
+									    <option value="${status.index }">${status.index }</option>
+								    </c:forEach>
+							    </select>（本题满分：${tp1003 }）
+						    </form>
+						    <p>题目描述：${question.queContent }</p>
+						    <p>参考答案：${question.queAnswer }</p>
+						    <p>学生答案：${question.stuAnswer }</p>
+						    <br>
+					    </c:forEach>
+					</c:if>
+					<c:if test="${empty quesList1003 }">简答题批改完成</c:if>
 				</div>
 				<br>
 				<p>论述与分析题</p>
 				<div id="proc">
-					<c:forEach items="${quesList1004 }" var="question">
-						<label>得分：</label>
-						<form action="">
-							<select name="count">
-								<c:forEach var="i" begin="0" end="${tp1004 }" varStatus="status">
-									<option value="${status.index }">${status.index }</option>
-								</c:forEach>
-							</select>（本题满分：${tp1004 }）
-						</form>
-						<p>题目描述：${question.queContent }</p>
-						<p>参考答案：${question.queAnswer }</p>
-						<p>学生答案：${question.stuAnswer }</p>
-						<br>
-					</c:forEach>
+					<c:if test="${not empty quesList1004 }">
+					    <c:forEach items="${quesList1004 }" var="question">
+						    <label>得分：</label>
+						    <form action="">
+							    <select name="count">
+								    <c:forEach var="i" begin="0" end="${tp1004 }" varStatus="status">
+									    <option value="${status.index }">${status.index }</option>
+								    </c:forEach>
+							    </select>（本题满分：${tp1004 }）
+						    </form>
+						    <p>题目描述：${question.queContent }</p>
+						    <p>参考答案：${question.queAnswer }</p>
+						    <p>学生答案：${question.stuAnswer }</p>
+						    <br>
+					    </c:forEach>
+					</c:if>
+					<c:if test="${empty quesList1004 }">分析与论述题批改完成</c:if>
 				</div>
 			</div>
 			<div align="center" style="padding: 20px 200px 10px;">
-				<button id="finish">确认提交批改</button>
+				<c:if test="${not empty quesList1004 }"><button id="finish">确认提交批改</button></c:if>
 			</div>
 		</div>
 		</section> </aside>

@@ -108,4 +108,21 @@ public class ScoreServiceImpl implements ScoreService {
 		return null;
 	}
 
+	@Override
+	public List<TbScore> getByStudentAndState(String studentId, Integer state) {
+		
+		TbScoreExample example = new TbScoreExample();
+
+		com.etsys.orm.pojo.TbScoreExample.Criteria criteria = example.createCriteria();
+		criteria.andStuIdEqualTo(studentId);
+		criteria.andScoTypeEqualTo(1000);
+		
+		List<TbScore> list = scoreMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+		
+		return null;
+	}
+
 }

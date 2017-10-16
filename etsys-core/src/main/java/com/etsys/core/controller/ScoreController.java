@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.ExceptionUtil;
 import com.etsys.commons.utils.IdUtils;
+import com.etsys.core.entity.StuScore;
+import com.etsys.core.service.CourseService;
 import com.etsys.core.service.ScoreService;
 import com.etsys.core.service.TestPaperService;
 import com.etsys.core.service.TestService;
+import com.etsys.orm.pojo.TbCourse;
 import com.etsys.orm.pojo.TbScore;
 import com.etsys.orm.pojo.TbTest;
 import com.etsys.orm.pojo.TbTestPaper;
@@ -35,6 +38,9 @@ public class ScoreController {
 	@Autowired
 	private TestService testService;
 
+	@Autowired
+	private CourseService courseService;
+
 	@RequestMapping("/getbyStuAndCourse")
 	public String getScoreBy(@RequestParam String studentId, @RequestParam String courseId, ModelMap modelMap) {
 
@@ -46,19 +52,21 @@ public class ScoreController {
 	}
 
 	@RequestMapping("/getByStudent/{studentId}")
-	public String getbyStudent(@PathVariable String studentId, ModelMap modelMap) {
+	public String getByStudent(@PathVariable String studentId, ModelMap modelMap) {
 
-		List<TbScore> scores = new ArrayList<TbScore>();
+		List<StuScore> scores = new ArrayList<>();
 
-		List<TbTestPaper> list = testPaperService.getByStudent(studentId);
-		for (TbTestPaper tbTestPaper : list) {
-			TbScore score = scoreService.getByTestPaper(studentId, null);
+		List<TbScore> list = scoreService.getByStudentAndState(studentId, 1000);
+		for (TbScore tbScore : list) {
+			TbTest test = testService.getTestById(tbScore.getTestId());
+			TbCourse course = courseService.getCourseById(test.getCourseId());
+			StuScore score = new StuScore(tbScore);
+			score.setCourseName(course.getCourseName());
 			scores.add(score);
 		}
 
 		modelMap.put("scores", scores);
-
-		return null;
+		return "stu-score";
 	}
 
 	@RequestMapping("/insertScore")
@@ -71,10 +79,10 @@ public class ScoreController {
 			scoreService.insertScore(score);
 
 			TbTest test = testService.getTestById(score.getTestId());
-			TbTestPaper testPaper = testPaperService.getTestPaperEntryUnique(score.getScoType(), score.getStuId(), test.getCourseId(),
-					score.getTestId());
+			TbTestPaper testPaper = testPaperService.getTestPaperEntryUnique(score.getScoType(), score.getStuId(),
+					test.getCourseId(), score.getTestId());
 			testPaper.setTpState(4);
-			
+
 			testPaperService.updateTestPaper(testPaper);
 
 			return JsonResult.ok();
@@ -83,14 +91,15 @@ public class ScoreController {
 			return JsonResult.build(500, ExceptionUtil.getStackTrace(e));
 		}
 	}
-	
+
 	@RequestMapping("/getByTestAndStudent")
-	public String getByTestAndStudent(@RequestParam String testId, @RequestParam String studentId, ModelMap modelMap) {
-		
+	public String getByTestAndStudent(@RequestParam String testId, @RequestParam String studentId,
+			@RequestParam String returnPage, ModelMap modelMap) {
+
 		List<TbScore> scores = scoreService.getByTestAndStudent(testId, studentId);
-		
+
 		modelMap.put("scores", scores);
-		return "teach-score-stus";
+		return returnPage;
 	}
-	
+
 }

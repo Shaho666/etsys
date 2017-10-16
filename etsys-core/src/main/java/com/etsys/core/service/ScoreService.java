@@ -16,4 +16,6 @@ public interface ScoreService {
 	
 	public List<TbScore> getByTestAndStudent(String testId, String studentId);
 	
+	public List<TbScore> getByStudentAndState(String studentId, Integer state);
+	
 }

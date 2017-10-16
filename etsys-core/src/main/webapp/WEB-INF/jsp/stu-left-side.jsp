@@ -43,7 +43,7 @@
 	</a></li>
 	
 	<li><a
-		href="/score/getbyStudent/${sessionScope.student.stuId }">
+		href="/score/getByStudent/${sessionScope.student.stuId }">
 			<i class="fa fa-gavel"></i> <span>成绩查询</span>
 	</a></li>
 

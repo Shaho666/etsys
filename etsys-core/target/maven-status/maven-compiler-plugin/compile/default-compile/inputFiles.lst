@@ -2,12 +2,12 @@ E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\contro
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\interceptor\SyncHandlerInterceptor.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\TestService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\pojo\PaperTemplate.java
-E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\pojo\StuAnswer.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\pojo\TpContentEntry.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\entity\Instructor.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\SignInServiceImpl.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\SignInService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\ScoreController.java
+E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\entity\StuScore.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\QuestionBankServiceImpl.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\CourseController.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\TestServiceImpl.java
@@ -22,6 +22,7 @@ E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\servic
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\TeacherCourseController.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\ScoreServiceImpl.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\TestPaperController.java
+E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\entity\StuAnswer.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\SignUpService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\utils\JsonRequestUtil.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\CourseServiceImpl.java
@@ -35,13 +36,13 @@ E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\utils\
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\CourseService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\SignInController.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\TemplateServiceImpl.java
-E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\pojo\StuTest.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\QuestionBankController.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\pojo\PageHelperResult.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\TeacherService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\TestPaperService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\QuestionTypeServiceImpl.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\IndexController.java
+E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\entity\StuTest.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\entity\Course.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\TemplateService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\entity\Student.java

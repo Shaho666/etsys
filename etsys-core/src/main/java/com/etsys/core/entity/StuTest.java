@@ -1,4 +1,4 @@
-package com.etsys.core.pojo;
+package com.etsys.core.entity;
 
 import com.etsys.orm.pojo.TbTest;
 

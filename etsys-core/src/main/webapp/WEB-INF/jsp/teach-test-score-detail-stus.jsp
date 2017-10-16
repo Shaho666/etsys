@@ -79,7 +79,7 @@
 						<c:forEach items="${students }" var="student">
 							<tr>
 								<td><a
-									href="/score/getByTestAndStudent?testId=${test.testId }&studentId=${student.stuId }">${student.stuId }</a></td>
+									href="/score/getByTestAndStudent?testId=${test.testId }&studentId=${student.stuId }&returnPage=teach-score-stus">${student.stuId }</a></td>
 								<td>${student.stuName }</td>
 								<td>${student.stuClass }</td>
 							</tr>

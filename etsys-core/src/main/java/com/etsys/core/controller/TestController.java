@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.etsys.commons.pojo.JsonResult;
 import com.etsys.commons.utils.ExceptionUtil;
 import com.etsys.commons.utils.IdUtils;
-import com.etsys.core.pojo.StuTest;
+import com.etsys.core.entity.StuTest;
 import com.etsys.core.service.CourseService;
 import com.etsys.core.service.TeacherService;
 import com.etsys.core.service.TemplateService;
