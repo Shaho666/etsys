@@ -67,6 +67,10 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -74,8 +78,11 @@
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
-					<port>8080</port>
+					<port>8082</port>
 					<path>/</path>
+					<url>http://116.196.72.233:8082/manager/text</url>
+					<username>tomcat</username>
+					<password>neu_work_666</password>
 				</configuration>
 			</plugin>
 		</plugins>

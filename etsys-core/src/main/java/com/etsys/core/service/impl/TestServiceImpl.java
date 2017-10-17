@@ -74,7 +74,7 @@ public class TestServiceImpl implements TestService {
 			com.etsys.orm.pojo.TbTestExample.Criteria criteria2 = example2.createCriteria();
 			criteria2.andCourseIdEqualTo(tbTeacherCourse.getCourseId());
 			List<TbTest> list2 = testMapper.selectByExample(example2);
-			tests.add(list2.get(0));
+			tests.addAll(list2);
 		}
 		
 		return tests;

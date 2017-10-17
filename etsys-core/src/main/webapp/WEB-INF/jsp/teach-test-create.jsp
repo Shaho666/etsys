@@ -62,7 +62,7 @@
 			});
 			$.post('/test/createTest', json, function(data) {
 				if (data.status == 200) {
-					alert("success")
+					location.href = '/course/getByTeacherId?teacherId=${sessionScope.teacher.teacherId }&returnPage=teach-test-paper';
 				} else {
 
 				}
@@ -104,7 +104,7 @@
 					<div class="panel panel-primary">
 						<div class="panel-heading">发布考试信息</div>
 						<div class="panel-body">
-							选择模板：<select class="combobox" name="temId">
+							选择模板：<select class="combobox" name="templateId">
 								<c:forEach items="${templates }" var="template">
 									<option value="${template.temId }">${template.temId }</option>
 								</c:forEach>
@@ -112,8 +112,13 @@
 								value="2017-10-13 10:00:00"> <br> <br> 课程编号：<input
 								name="courseId" type="text" value="${course.courseId }"
 								readonly="readonly"><br> <br> 教师编号：<input
-								name="teacherId" type="text"
-								value="${sessionScope.teacher.teacherId }"><br> <br>
+								name="teacherId" type="text" readonly="readonly"
+								value="${sessionScope.teacher.teacherId }"><br><br>
+								试卷难度：<select name="testDegree">
+								<c:forEach begin="1" end="5" varStatus="status">
+								    <option value="${status.index }">${status.index }</option>
+								</c:forEach>
+								</select> <br>
 						</div>
 					</div>
 				</form>

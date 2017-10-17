@@ -3,6 +3,7 @@ E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\interc
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\TestService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\pojo\PaperTemplate.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\pojo\TpContentEntry.java
+E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\dao\impl\JedisClientPool.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\entity\Instructor.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\SignInServiceImpl.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\SignInService.java
@@ -14,6 +15,7 @@ E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\servic
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\ScoreService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\TestController.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\TeacherCourseService.java
+E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\aspectj\RedisAdvices.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\StudentController.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\TeacherCourseServiceImpl.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\StudentService.java
@@ -35,12 +37,14 @@ E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\servic
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\utils\PaperStrategyUtil.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\CourseService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\SignInController.java
+E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\dao\impl\JedisClientCluster.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\TemplateServiceImpl.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\QuestionBankController.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\pojo\PageHelperResult.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\TeacherService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\TestPaperService.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\service\impl\QuestionTypeServiceImpl.java
+E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\dao\JedisClient.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\controller\IndexController.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\entity\StuTest.java
 E:\workspace\eclipse-oxygen\etsys\etsys-core\src\main\java\com\etsys\core\entity\Course.java

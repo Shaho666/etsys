@@ -5,14 +5,17 @@ com\etsys\core\controller\IndexController.class
 com\etsys\core\service\TemplateService.class
 com\etsys\core\service\TbPaperStateService.class
 com\etsys\core\entity\StuScore.class
+com\etsys\core\dao\JedisClient.class
 com\etsys\core\service\SignInService.class
 com\etsys\core\controller\StudentController.class
 com\etsys\core\utils\PaperStrategyUtil.class
 com\etsys\core\service\TeacherCourseService.class
 com\etsys\core\service\impl\TemplateServiceImpl.class
+com\etsys\core\dao\impl\JedisClientPool.class
 com\etsys\core\entity\Course.class
 com\etsys\core\service\StudentService.class
 com\etsys\core\controller\TestPaperController.class
+com\etsys\core\aspectj\RedisAdvices.class
 com\etsys\core\entity\StuAnswer.class
 com\etsys\core\service\impl\StudentServiceImpl.class
 com\etsys\core\service\impl\SignInServiceImpl.class
@@ -37,6 +40,7 @@ com\etsys\core\service\ScoreService.class
 com\etsys\core\service\TestService.class
 com\etsys\core\entity\Instructor.class
 com\etsys\core\controller\QuestionBankController.class
+com\etsys\core\dao\impl\JedisClientCluster.class
 com\etsys\core\service\impl\TeacherCourseServiceImpl.class
 com\etsys\core\controller\TeacherCourseController.class
 com\etsys\core\service\impl\QuestionTypeServiceImpl.class

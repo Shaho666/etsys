@@ -51,6 +51,7 @@
 							<th>课程编号</th>
 							<th>教师编号</th>
 							<th>模板引用</th>
+							<th>试卷难度</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -61,6 +62,7 @@
 								<td>${test.courseId }</td>
 								<td>${test.teacherId }</td>
 								<td>${test.templateId }</td>
+								<td>${test.testDegree }</td>
 							</tr>
 						</c:forEach>
 					</tbody>

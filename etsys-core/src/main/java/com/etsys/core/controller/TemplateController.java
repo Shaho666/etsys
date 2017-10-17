@@ -1,6 +1,7 @@
 package com.etsys.core.controller;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.etsys.commons.pojo.JsonResult;
+import com.etsys.commons.utils.ExceptionUtil;
 import com.etsys.commons.utils.IdUtils;
 import com.etsys.core.service.CourseService;
 import com.etsys.core.service.TemplateService;
@@ -35,6 +37,16 @@ public class TemplateController {
 		TbCourse course = courseService.getCourseById(courseId);
 
 		List<TbTemplate> templates = templateService.getTemplate(teacherId, courseId);
+		Iterator<TbTemplate> templatesIter = templates.iterator();
+		while (templatesIter.hasNext()) {
+			TbTemplate template = templatesIter.next();
+			List<TbTemplateEntry> list = templateService.getEntries(template.getTemId());
+			if (list == null || list.size() == 0) {
+				templateService.deleteTemplateInfo(template);
+				templatesIter.remove();
+			}
+		}
+
 		modelMap.put("templates", templates);
 		modelMap.put("course", course);
 
@@ -46,7 +58,7 @@ public class TemplateController {
 			ModelMap modelMap) {
 
 		TbCourse course = courseService.getCourseById(courseId);
-		
+
 		List<TbTemplateEntry> entries = templateService.getEntries(templateId);
 		modelMap.put("entries", entries);
 		modelMap.put("course", course);
@@ -77,11 +89,18 @@ public class TemplateController {
 	@ResponseBody
 	public JsonResult insertTemplateEntry(@RequestBody List<TbTemplateEntry> templateEntry) {
 
-		for (TbTemplateEntry tbTemplateEntry : templateEntry) {
-			templateService.insertTemplateEntry(tbTemplateEntry);
-		}
+		try {
+			
+			for (TbTemplateEntry tbTemplateEntry : templateEntry) {
+				templateService.insertTemplateEntry(tbTemplateEntry);
+			}
 
-		return JsonResult.ok();
+			return JsonResult.ok();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.build(500, ExceptionUtil.getStackTrace(e));
+		}
 	}
 
 	@RequestMapping("/updateTemplate")

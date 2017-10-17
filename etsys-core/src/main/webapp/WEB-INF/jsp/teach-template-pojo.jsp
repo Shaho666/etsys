@@ -31,9 +31,10 @@
 		    
 		    $.post('/template/insertTemplateEntry', json, function(data) {
 			    if (data.status == 200) {
+			    	alert("提交成功")
 				    location.href = '/course/getByTeacherId?teacherId=' + "${sessionScope.teacher.teacherId }" + '&returnPage=teach-template';
 			    } else {
-
+			    	alert("不允许为空")
 			    }
 		    });
 	    });

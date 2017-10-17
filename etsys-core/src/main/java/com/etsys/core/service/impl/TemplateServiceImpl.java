@@ -71,7 +71,7 @@ public class TemplateServiceImpl implements TemplateService {
 	@Override
 	public void deleteTemplateInfo(TbTemplate template) {
 
-		/* 在此处填入合适的代码 */
+		templateMapper.deleteByPrimaryKey(template.getTemId());
 
 	}
 
